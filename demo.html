@@ -31,23 +31,21 @@
             <!--class="layui-btn"-->
             <!--  -->
             <button type="button" class="layui-btn" id="searchAll">列出所有</button>
-            <form action="login" method="post" onclick="Login()">
-                username:
-                <input type="text" id="username">
-                passwd:
-                <input type="password" id="password">
-                <input type="submit" value="submit">
-            </form>
+            username:
+            <input type="text" id="username">
+            passwd:
+            <input type="password" id="password">
+            <input type="submit" value="submit" onclick="Login()">
         </div>
-        <script src="assets/js/jquery-1.11.1.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery.backstretch.min.js"></script>
-        <script src="assets/js/retina-1.1.0.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
-        <script src="assets/js/jsencrypt.js"></script>
-        <script src="assets/js/crypto-js.js"></script>
-        <script src="assets/js/md5.js"></script>
-        <script src="assets/js/jsencrypt.min.js"></script>
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/jquery.backstretch.min.js"></script>
+        <script src="js/retina-1.1.0.min.js"></script>
+        <script src="js/scripts.js"></script>
+        <script src="js/jsencrypt.js"></script>
+        <script src="js/crypto-js.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/jsencrypt.min.js"></script>
+        <script src="js/mycrypto.js"></script>
         <script type="text/javascript">
             function Login(){
             var key_str = getAesKey(32);
@@ -64,7 +62,33 @@
             var payload_json = JSON.stringify(payload)
             var payload_json_enc = encryptByAES(payload_json,key_str,iv)
             
+            //key = "us er"
+
             var mac = String(CryptoJS.SHA512(key+ivstr+payload_json_enc))
+            console.log("keystr:"+key_str)
+            console.log("iv:"+iv)
+            console.log("payload_json:"+payload_json)
+            console.log("payload_json_enc:"+payload_json_enc)
+            console.log("key:"+key)
+            console.log(key.length)
+            console.log("ivstr:"+ivstr)
+            console.log("payload_json_enc:"+payload_json_enc)
+
+            key_raw = "QzWvBsTj3RA6b1CkrBZQyBDmAWW0man1XB5KBn0ILB3MVHf1k6Yk3oCC2VrEQIh0Ze3ZpX3N3JoAEvf9YPVdEb9zIgnAbnpZVc5P1m28T4oRCFWJeYavuKl%2BYnvPa0iCOY2wXHjhWTSctMaD5Cf4UOToDSbQQxotqp%2FJ30bmSdA%3D";
+            iv_raw = "L5cqQkNHzkHJ3qBWpRawfZ3PLd6rPP%2Fw7YcIwqtu1f1NfxcHTZ473spyXocoFgjGGskXB6%2F91voxSPEpvc0hRdWdWRH4XsIRPZ89o797TBZK1I7DySWqOa41CL8JcURWFWNxoHJWbwpCicYJEB0N66HfbxHaQcFJyS%2BdgosgJA0%3D";
+            payload_raw = "Bh0pweFzY3d2POR6OSsM5%2B9tLl74sPcNErlYBP1VrqUe6LlY6mLkwVQj%2BiiGfYn8";
+            mac_trans = "dbfc8ee27026924b049c5d7b5f0a4baded357216559cbd9bc8d934a5da073bab79373d5d82a99651ae36a63eca9d73583fd31da280755a7c0d768a0c4c82ee25";
+            var mac_temp = String(CryptoJS.SHA512(key_raw+iv_raw+payload_raw))
+            console.log("mac_cal:"+mac_temp)
+            console.log(mac_temp.length)
+            if(mac_temp==mac_trans)console.log("equal")
+            else console.log("not equal")
+            
+            var string = "powershell"
+            var string_enc = encryptByRSA(string,0)
+            console.log(string_enc)
+            console.log(string_enc.length)
+
 
             xmlhttp = new XMLHttpRequest()
             xmlhttp.open("POST","/DBManager/login",false)

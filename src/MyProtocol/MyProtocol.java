@@ -1,8 +1,7 @@
-import static org.junit.Assert.assertArrayEquals;
+package MyProtocol;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.InvalidAlgorithmParameterException;
@@ -36,9 +35,9 @@ import javax.crypto.spec.SecretKeySpec;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 public class MyProtocol {
-    public MyProtocol() {
-        Security.addProvider(new BouncyCastleProvider());
-    }
+    //public MyProtocol() {
+    //    Security.addProvider(new BouncyCastleProvider());
+    //}
 
     private String PRIV_KEY = "MIICXAIBAAKBgQCztkK+sbF4LzuKPshL9DmKbMq6mvvT7s+GVVmURiZNC8m4Awhe" +
             "BDje4RTdbDXqnhZSSS8MtziszfWPhvf1q3SnpkTa7G9+U8p835UG7SQSH6f3mOrJ" +
@@ -61,73 +60,94 @@ public class MyProtocol {
     //RSA密钥长度
     private static final int KEY_SIZE = 1024;
     //AES
-    private static final String AES_ALGORI = "AES/CBC/PKCS7Padding";
+    //private static final String AES_ALGORI = "AES/CBC/PKCS5Padding";
+    //private static final String AES_ALGORI = "AES/CBC/NoPadding";
+    private static final String AES_ALGORI = "AES/CBC/ISO10126Padding";
+    private static final String RSA_ALGORI = "RSA";
 
     public String decode(String payload, String key, String iv, String mac) throws UnsupportedEncodingException {
         try {
             Base64.Decoder base64dec = Base64.getDecoder();
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
 
-            String payload_raw = URLDecoder.decode(payload, "UTF-8");
-            String payload_json_enc = base64dec.decode(payload_raw)
-                    .toString();
-            String mac_raw = URLDecoder.decode(mac, "UTF-8");
-            String mac_basedec = base64dec.decode(mac_raw).toString();
-            String key_raw = URLDecoder.decode(key, "UTF-8");
-            String key_basedec = base64dec.decode(key_raw).toString();
-            String iv_raw = URLDecoder.decode(iv, "UTF-8");
-            String iv_basedec = base64dec.decode(iv_raw).toString();
+            //String payload_raw = URLDecoder.decode(payload, "UTF-8");
+            String payload_raw = payload;
+            byte[] payload_json_enc = base64dec.decode(payload_raw);
+            //String mac_raw = URLDecoder.decode(mac, "UTF-8");
+            String mac_raw = mac;
+            //String mac_basedec = base64dec.decode(mac).toString();
+            //String key_raw = URLDecoder.decode(key, "UTF-8");
+            String key_raw = key;
+            byte[] key_basedec = base64dec.decode(key_raw);
+            //String iv_raw = URLDecoder.decode(iv, "UTF-8");
+            String iv_raw = iv;
+            byte[] iv_basedec = base64dec.decode(iv_raw);
             byte[] mac_cal = md.digest((key_raw + iv_raw + payload_raw).getBytes());
+            //String mac_str = mac_cal.toString();
+            String mac_str = bytes2HexString(mac_cal);
+
             //验证完整性
-            assertArrayEquals(mac_cal, mac_raw.getBytes());
+            if (!mac_str.equals(mac_raw))
+                return new String("Mac Error");
+            //assertTrue(mac_str.equals(mac_raw));
+            //assertArrayEquals(mac_cal, mac_raw.getBytes());
             //RSA解密
-            byte[] key_dec = decryptByPrivateKey(key_basedec.getBytes());
-            byte[] iv_dec = decryptByPrivateKey(iv_basedec.getBytes());
+            byte[] key_dec = decryptByPrivateKey(key_basedec);
+            byte[] iv_dec = decryptByPrivateKey(iv_basedec);
+            printbytearray(key_dec);
+            printbytearray(iv_dec);
             //AES CBC解密
-            byte[] payload_json = decryptByAES(payload_json_enc.getBytes(), key_dec, iv_dec);
-            return payload_json.toString();
+            byte[] payload_json = decryptByAES(payload_json_enc, key_dec, iv_dec);
+            return bytearray2string(payload_json);
         } catch (NoSuchAlgorithmException ae) {
             ae.printStackTrace();
+            return new String("error");
         } catch (NoSuchPaddingException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            return new String("error");
         } catch (InvalidKeySpecException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            return new String("error");
         } catch (InvalidKeyException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            return new String("error");
         } catch (IllegalBlockSizeException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            return new String("error");
         } catch (BadPaddingException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            return new String("error");
         } catch (InvalidAlgorithmParameterException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            return new String("error");
         } finally {
-            return new String("Error");
+            //return new String("Error");
         }
     }
 
     public byte[] decryptByPrivateKey(byte[] data) throws NoSuchAlgorithmException, InvalidKeySpecException,
             NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
-        PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(PRIV_KEY.getBytes());
-        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-        PrivateKey privateKey = keyFactory.generatePrivate((pkcs8EncodedKeySpec));
-        Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
+        //PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(PRIV_KEY.getBytes());
+        //KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+        //PrivateKey privateKey = keyFactory.generatePrivate((pkcs8EncodedKeySpec));
+        Cipher cipher = Cipher.getInstance(RSA_ALGORI);
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
         byte[] key_dec = cipher.doFinal(data);
-        return key_dec;
+        return cleanRSAResult(key_dec);
     }
 
     public byte[] encryptByPublicKey(byte[] data) throws NoSuchAlgorithmException, InvalidKeySpecException,
             NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
-        X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(PUB_KEY.getBytes());
-        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-        PublicKey publicKey = keyFactory.generatePublic((x509EncodedKeySpec));
-        Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
+        //X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(PUB_KEY.getBytes());
+        //KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+        //PublicKey publicKey = keyFactory.generatePublic((x509EncodedKeySpec));
+        Cipher cipher = Cipher.getInstance(RSA_ALGORI);
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
         byte[] key_dec = cipher.doFinal(data);
         return key_dec;
@@ -197,7 +217,8 @@ public class MyProtocol {
             InvalidAlgorithmParameterException, NoSuchAlgorithmException, NoSuchPaddingException,
             NoSuchProviderException {
         SecretKeySpec keySpec = new SecretKeySpec(key, "AES");
-        Cipher cipher = Cipher.getInstance(AES_ALGORI, "BC");
+        //Cipher cipher = Cipher.getInstance(AES_ALGORI, "BC");
+        Cipher cipher = Cipher.getInstance(AES_ALGORI);
         cipher.init(Cipher.ENCRYPT_MODE, keySpec, new IvParameterSpec(iv));
         return cipher.doFinal(data);
     }
@@ -210,5 +231,70 @@ public class MyProtocol {
             res += chars.charAt((int) Math.floor(Math.random() * maxpos));
         }
         return res;
+    }
+
+    /**
+    * @Title:bytes2HexString
+    * @Description:字节数组转16进制字符串
+    * @param b
+    * 字节数组
+    * @return 16进制字符串
+    * @throws
+    */
+    public static String bytes2HexString(byte[] b) {
+        StringBuffer result = new StringBuffer();
+        for (int i = 0; i < b.length; i++) {
+            result.append(String.format("%02x", b[i]));
+        }
+        return result.toString();
+    }
+
+    /**
+     * @Title:hexString2Bytes
+     * @Description:16进制字符串转字节数组
+     * @param src
+     * 16进制字符串
+     * @return 字节数组
+     * @throws
+     */
+    public static byte[] hexString2Bytes(String src) {
+        int l = src.length() / 2;
+        byte[] ret = new byte[l];
+        for (int i = 0; i < l; i++) {
+            ret[i] = Integer.valueOf(src.substring(i * 2, i * 2 + 2), 16).byteValue();
+        }
+        return ret;
+    }
+
+    //RSA解密后的byte数组有效值在末尾，之前的部分都为0，去掉为0的元素
+    public static byte[] cleanRSAResult(byte[] data) {
+        int num = 0;
+
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] != 0)
+                num++;
+        }
+        byte[] res = new byte[num];
+        for (int i = num - 1; i >= 0; i--) {
+            res[i] = data[data.length - (num - i)];
+        }
+        return res;
+
+    }
+
+    public static void printbytearray(byte[] data) {
+        for (int i = 0; i < data.length; i++) {
+            System.out.print(String.format("%c", (int) data[i]));
+            //System.out.print(",");
+        }
+        System.out.println();
+    }
+
+    public static String bytearray2string(byte[] data) {
+        StringBuffer str = new StringBuffer();
+        for (int i = 0; i < data.length; i++) {
+            str.append(String.format("%c", (int) data[i]));
+        }
+        return str.toString();
     }
 }

@@ -1,15 +1,16 @@
+//PKCS#1 padding   
 function encryptByRSA(string, key) {
     pubkey = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCztkK+sbF4LzuKPshL9DmKbMq6mvvT7s+GVVmURiZNC8m4AwheBDje4RTdbDXqnhZSSS8MtziszfWPhvf1q3SnpkTa7G9+U8p835UG7SQSH6f3mOrJWMHqyYzDyOnNKc/V5am72D6qNgjwlr5FAHj2O3RstdaIcRW+HPuNjNNGqwIDAQAB';
     let jsencrypt = new JSEncrypt();
     jsencrypt.setPublicKey(pubkey);
-    return jsencrypt.encrypt(string);
+    return jsencrypt.encrypt(string);//base64
 }
 function encryptByAES(string, key, ivstr) {
     //key = '1234567890123456';
     let ckey = CryptoJS.enc.Utf8.parse(key);
     let encrypted = CryptoJS.AES.encrypt(string, ckey, {
         mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7,
+        padding: CryptoJS.pad.Iso10126,
         iv: CryptoJS.enc.Utf8.parse(ivstr)
     });
     return encrypted.toString() // base64
