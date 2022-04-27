@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <title>学生信息管理</title>
+        <style type="text/css">
+                .alertceng{
+                    background: #FFFFFF;
+                    padding: 10px;
+                    display: none;
+                }
+                .alertceng span.title{
+                    margin-right: 10px;
+                }
+        </style>
+    </head>
+    <body>
+        <div class="controls">
+            <input
+                id="input_search"
+                name="input_search"
+                type="text"
+                class="input-xlarge"
+                placeholder="search"
+            >
+            <label id="searchWarn"></label>
+            <button type="button" class="layui-btn" id="search">公司名/用户/邮箱查询</button>
+            <!--class="layui-btn"-->
+            <!--  -->
+            <button type="button" class="layui-btn" id="searchAll">列出所有</button>
+            <form action="login" method="post" onclick="Login()">
+                username:
+                <input type="text" id="username">
+                passwd:
+                <input type="password" id="password">
+                <input type="submit" value="submit">
+            </form>
+        </div>
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/retina-1.1.0.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        <script src="assets/js/jsencrypt.js"></script>
+        <script src="assets/js/crypto-js.js"></script>
+        <script src="assets/js/md5.js"></script>
+        <script src="assets/js/jsencrypt.min.js"></script>
+        <script type="text/javascript">
+            function Login(){
+            var key_str = getAesKey(32);
+            var key = encryptByRSA(key_str,0);
+            var iv = getAesKey(16);
+            var ivstr = encryptByRSA(iv,0);
+
+            var username = document.getElementById("username").value
+            var password = document.getElementById("password").value
+            var payload = {
+                username:username,
+                password:password
+            }
+            var payload_json = JSON.stringify(payload)
+            var payload_json_enc = encryptByAES(payload_json,key_str,iv)
+            
+            var mac = String(CryptoJS.SHA512(key+ivstr+payload_json_enc))
+
+            xmlhttp = new XMLHttpRequest()
+            xmlhttp.open("POST","/DBManager/login",false)
+            xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+            xmlhttp.send("key="+encodeURIComponent(key)+"&iv="+encodeURIComponent(ivstr)+"&payload="+encodeURIComponent(payload_json_enc)+"&mac="+encodeURIComponent(mac))
+
+            var data = xmlhttp.responseText;
+            alert(data);
+            return true;
+        }
+        </script>
+    </body>
+</html>
