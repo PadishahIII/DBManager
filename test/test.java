@@ -95,12 +95,19 @@ public class test {
         //String mac_trans = "83ab397ecdb7f6946eb01f195e01e0b93ba0b97122c3a0de390e833db6badf075afaeb43f36ca46757d203934539a1a7e918a43f77d9f17375c62cfb31ce7199";
 
         //ISO10126Padding √
-        String key_raw = "TAKCIwYzCN6Z42EaYWw4B%2FXd08BdFB%2B47Ttu5y9qDyJUO5jxhfuru%2FVxFC%2BQn0bXp8%2FP4dZQmd%2BAWnU4n8A4GuXcqpOvZrb1owmum%2FODPUrCTxTyFrAACiggr4Mh7g4XdLTmjD7wK%2Bcjulkomb41FiZTyVgZvrpdjDzvXktawKw%3D";
-        String iv_raw = "A62YEGmC2gxUQNNjz%2B492HmETFzjoVp%2FfcNcWKyzcwTrsB7FUb%2FlGTrG0k09gGoA5AVHbUHzv9eanvY%2FgsvF83sckQTMNa%2Bj5T2DspC06y6Vp%2F2%2B9q3oJF7WkWTyIObThbz1TO7dstgQNfQImzAmcGXo6%2FBPJsXplTUsL%2BNnLmY%3D";
-        String payload_raw = "rKqWn2vHidwsa47vpQ4VPXf%2FRYT%2BQCOSPRchOQwmZfzziMDOAbISnc0JBhW5oakH";
-        String mac_trans = "cda5023df156f97eba435d9ac236dbe8eb89206fb2691f9bc94708f92258ae145582f1996bbbbc3952d57deca6a52832f701821020fd449c081fb48a9edd26fc";
+        //String key_raw = "TAKCIwYzCN6Z42EaYWw4B%2FXd08BdFB%2B47Ttu5y9qDyJUO5jxhfuru%2FVxFC%2BQn0bXp8%2FP4dZQmd%2BAWnU4n8A4GuXcqpOvZrb1owmum%2FODPUrCTxTyFrAACiggr4Mh7g4XdLTmjD7wK%2Bcjulkomb41FiZTyVgZvrpdjDzvXktawKw%3D";
+        //String iv_raw = "A62YEGmC2gxUQNNjz%2B492HmETFzjoVp%2FfcNcWKyzcwTrsB7FUb%2FlGTrG0k09gGoA5AVHbUHzv9eanvY%2FgsvF83sckQTMNa%2Bj5T2DspC06y6Vp%2F2%2B9q3oJF7WkWTyIObThbz1TO7dstgQNfQImzAmcGXo6%2FBPJsXplTUsL%2BNnLmY%3D";
+        //String payload_raw = "rKqWn2vHidwsa47vpQ4VPXf%2FRYT%2BQCOSPRchOQwmZfzziMDOAbISnc0JBhW5oakH";
+        //String mac_trans = "cda5023df156f97eba435d9ac236dbe8eb89206fb2691f9bc94708f92258ae145582f1996bbbbc3952d57deca6a52832f701821020fd449c081fb48a9edd26fc";
+        String payload_raw = "72a8KmrLfUM01kwspZf89uxs2kJG/+NJcAFj693vwrVTLDheeyWD7tU4mOoNNBbE";
+        String key_raw = "eTfqkRAEPmhJ0EwakOwft+4XmnvgziTpf9fNoPr07yp6AYsH92AVQbobRUq9wbse20nG+Co4HzUUfhYG+Hj0fMFtwxQ4ymBmg1P2Opx8KGd9su5Cv6DGemNMic0T0Ycosxagb3izIdIXe+OFk6YpO2bOyhjIeKzl5+PyvmJd37s=";
+        String iv_raw = "rh6jb+i2X15JWufN7Slq4Fu1zkEf00H4M2BpwkPyV4vsV/P2flGSB76T+WNepdIH9N6pWwmA9Hxdr9j7byxKonpbsB41n0JyC3F8TVPNHUzgmzW9fzy3IHJWvs/BDzW2MFQ7sgJxLYZyG1J1vH4Z0PYeAwI2dqhI765Bqh3mBt0=";
+        String mac_trans = "2e9d30ae65ecae064adf48b026df38c0aa379d8d9d52a55b1641073fa09f7ff1f4c3f3462a959d760cc0b0f8ddf16471a7595fdcb86256d2c1bc8fabb2487bfe";
         String str = mp.decode(payload_raw, key_raw, iv_raw, mac_trans);
+        String reply = mp.reply(str);
         System.out.println(str);
+
+        System.out.println(reply);
 
     }
 

@@ -96,8 +96,29 @@
             xmlhttp.send("key="+encodeURIComponent(key)+"&iv="+encodeURIComponent(ivstr)+"&payload="+encodeURIComponent(payload_json_enc)+"&mac="+encodeURIComponent(mac))
 
             var data = xmlhttp.responseText;
-            alert(data);
-            return true;
+            if(data[0]!='{'){
+                alert(data);
+                return false;
+            }
+            else {
+                var data_arr = JSON.parse(data);
+                var response_payload_json_enc = data_arr['payload']
+                var response_mac_trans = data_arr['mac']
+                var response_mac_cal = CryptoJS.SHA512((response_payload_json_enc))
+                console.log("payload:"+response_payload_json_enc)
+                console.log("mac_cal:"+response_mac_cal)
+                console.log("mac_trans:"+response_mac_trans)
+                if(response_mac_cal!=response_mac_trans){
+                    alert("mac error!");
+                    return false
+                }
+                var response_payload_json = decryptByAES((response_payload_json_enc),key_str,iv)
+                console.log(response_payload_json)
+                var response_payload = JSON.parse(response_payload_json)
+                var data = response_payload['data']
+                alert(data)
+                return true;
+            }
         }
         </script>
     </body>

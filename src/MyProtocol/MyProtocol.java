@@ -23,6 +23,7 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.IllegalFormatCodePointException;
 import java.util.Map;
 
 import javax.crypto.BadPaddingException;
@@ -31,6 +32,8 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+
+import com.alibaba.fastjson.JSONObject;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
@@ -56,6 +59,8 @@ public class MyProtocol {
 
     private PublicKey publicKey;
     private PrivateKey privateKey;
+    private byte[] AESKey;
+    private byte[] AESIV;
 
     //RSA密钥长度
     private static final int KEY_SIZE = 1024;
@@ -94,6 +99,8 @@ public class MyProtocol {
             //RSA解密
             byte[] key_dec = decryptByPrivateKey(key_basedec);
             byte[] iv_dec = decryptByPrivateKey(iv_basedec);
+            AESKey = key_dec;
+            AESIV = iv_dec;
             printbytearray(key_dec);
             printbytearray(iv_dec);
             //AES CBC解密
@@ -150,7 +157,7 @@ public class MyProtocol {
         Cipher cipher = Cipher.getInstance(RSA_ALGORI);
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
         byte[] key_dec = cipher.doFinal(data);
-        return key_dec;
+        return cleanRSAResult(key_dec);
     }
 
     public byte[] decryptByAES(byte[] data, byte[] key, byte[] iv)
@@ -160,6 +167,39 @@ public class MyProtocol {
         Cipher cipher = Cipher.getInstance(AES_ALGORI);
         cipher.init(Cipher.DECRYPT_MODE, keySpec, new IvParameterSpec(iv));
         return cipher.doFinal(data);
+    }
+
+    /**
+     * 应答消息格式
+     * replymsg:{
+     *  payload:{
+     *      "data":data
+     *      }
+     *  mac:hashOfPayload
+     * }
+     */
+    public String reply(String data) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException,
+            InvalidAlgorithmParameterException, NoSuchAlgorithmException, NoSuchPaddingException,
+            NoSuchProviderException {
+        Base64.Encoder baseenc = Base64.getEncoder();
+        JSONObject payload = new JSONObject();
+        JSONObject replymsg = new JSONObject();
+        payload.put("data", data);
+        String payload_json = payload.toJSONString();
+
+        byte[] payload_json_enc_byte = encryptByAES(payload_json.getBytes(), AESKey, AESIV);
+        //String payload_json_enc = bytearray2string(payload_json_enc_byte);
+        String payload_json_enc_base = baseenc.encodeToString(payload_json_enc_byte);
+        //mac
+        MessageDigest md = MessageDigest.getInstance("SHA-512");
+        byte[] mac_byte = md.digest(payload_json_enc_base.getBytes());
+        String mac = bytes2HexString(mac_byte);
+
+        replymsg.put("payload", payload_json_enc_byte);
+        replymsg.put("mac", mac);
+
+        return replymsg.toJSONString();
+
     }
 
     //生成指定大小的密钥对
@@ -291,10 +331,20 @@ public class MyProtocol {
     }
 
     public static String bytearray2string(byte[] data) {
-        StringBuffer str = new StringBuffer();
-        for (int i = 0; i < data.length; i++) {
-            str.append(String.format("%c", (int) data[i]));
+        int i = 0;
+        try {
+            StringBuffer str = new StringBuffer();
+            for (i = 0; i < data.length; i++) {
+                str.append(String.format("%c", (int) data[i]));
+            }
+            return str.toString();
+        } catch (IllegalFormatCodePointException e) {
+            e.printStackTrace();
+            System.out.println(i);
+            System.out.println(data[i]);
+            System.out.println((int) data[i]);
+
+            return "error";
         }
-        return str.toString();
     }
 }
