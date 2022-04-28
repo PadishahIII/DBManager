@@ -89,7 +89,8 @@ public class Login extends HttpServlet {
                     String password_db = res.getString("password");
                     if (password_mac_str.equals(password_db)) {
                         //成功
-                        out.println("Login Success!\nWelcome " + username + "!");
+                        //out.println("Login Success!\nWelcome " + username + "!");
+                        out.println(reply_json);
                         Success = true;
                         break;
                     }

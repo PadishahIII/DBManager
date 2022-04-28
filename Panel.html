@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            window.onload=function(){
+                let username = getCookieValue('username')
+                if(username=='')
+                {
+                    let atag = document.createElement('a')
+                    let href  = "./Login.html"
+                    atag.href = href
+                    atag.click()
+                }
+            }
+        </script>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <title>学生信息管理</title>
+        <style type="text/css">
+                .alertceng{
+                    background: #FFFFFF;
+                    padding: 10px;
+                    display: none;
+                }
+                .alertceng span.title{
+                    margin-right: 10px;
+                }
+        </style>
+    </head>
+    <body>
+        <div class="controls">
+            <input
+                id="input_search"
+                name="input_search"
+                type="text"
+                class="input-xlarge"
+                placeholder="search"
+            >
+            <label id="searchWarn"></label>
+            <button type="button" class="layui-btn" id="search">公司名/用户/邮箱查询</button>
+            <!--class="layui-btn"-->
+            <!--  -->
+            <button type="button" class="layui-btn" id="searchAll">列出所有</button>
+        </div>
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/jquery.backstretch.min.js"></script>
+        <script src="js/retina-1.1.0.min.js"></script>
+        <script src="js/scripts.js"></script>
+        <script src="js/jsencrypt.js"></script>
+        <script src="js/crypto-js.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/jsencrypt.min.js"></script>
+        <script src="js/mycrypto.js"></script>
+        <script src="js/cookie.js"></script>
+        <script type="text/javascript"></script>
+    </body>
+</html>

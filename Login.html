@@ -46,6 +46,7 @@
         <script src="js/md5.js"></script>
         <script src="js/jsencrypt.min.js"></script>
         <script src="js/mycrypto.js"></script>
+        <script src="js/cookie.js"></script>
         <script type="text/javascript">
             function Login(){
             var key_str = getAesKey(32);
@@ -100,7 +101,8 @@
                 alert(data);
                 return false;
             }
-            else {
+            else 
+            {
                 var data_arr = JSON.parse(data);
                 var response_payload_json_enc = data_arr['payload']
                 var response_mac_trans = data_arr['mac']
@@ -117,6 +119,12 @@
                 var response_payload = JSON.parse(response_payload_json)
                 var data = response_payload['data']
                 alert(data)
+                //跳转
+                addCookie("username",username,'','/')
+                let atag = document.createElement('a')
+                let href  = "./Panel.html"
+                atag.href = href
+                atag.click()
                 return true;
             }
         }
