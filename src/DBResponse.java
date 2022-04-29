@@ -2,6 +2,7 @@ import jakarta.servlet.http.HttpServlet;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -20,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.mysql.jdbc.PreparedStatement;
 
@@ -45,7 +47,7 @@ public class DBResponse extends HttpServlet {
     public DBResponse() throws FileNotFoundException {
         init_mysql();
         File logfile = new File(LogPath);
-        log = new PrintStream(logfile);
+        log = new PrintStream(new FileOutputStream(logfile, true));
     }
 
     protected void init_mysql() {
@@ -172,6 +174,52 @@ public class DBResponse extends HttpServlet {
                 out.println("插入失败，数据格式有误");
             } //try
         } //if url
+        else if (op.equals("delete")) {
+            try {
+                String tblname = request.getParameter("tblname");
+                Map<String, String> data_map = new HashMap<>();
+                Map<String, String[]> temp_map = request.getParameterMap();
+                for (String key : temp_map.keySet()) {
+                    data_map.put(key, temp_map.get(key)[0]);
+                }
+
+                if (!deleteFromTable(tblname, data_map, out)) {
+                    out.println("删除失败！");
+                    return;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                out.println("删除失败，数据格式有误");
+            } //try
+        } //if url
+        else if (op.equals("update")) {
+            try {
+                String tblname = request.getParameter("tblname");
+                String data_map_json = request.getParameter("data_map_json");
+                JSONObject data_map = JSONObject.parseObject(data_map_json);
+                String old_data_map_json = data_map.getString("old");
+                String new_data_map_json = data_map.getString("new");
+                JSONObject old_data_map_obj = JSONObject.parseObject(old_data_map_json);
+                JSONObject new_data_map_obj = JSONObject.parseObject(new_data_map_json);
+
+                Map<String, String> old_data_map = new HashMap<>();
+                Map<String, String> new_data_map = new HashMap<>();
+                for (String k : old_data_map_obj.keySet()) {
+                    old_data_map.put(k, old_data_map_obj.getString(k));
+                }
+                for (String k : new_data_map_obj.keySet()) {
+                    new_data_map.put(k, new_data_map_obj.getString(k));
+                }
+                if (!updateFromTable(tblname, old_data_map, new_data_map, out)) {
+                    out.println("更新失败！");
+                    return;
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                out.println("更新失败，数据格式有误");
+            }
+        }
     }
 
     /**
@@ -210,7 +258,7 @@ public class DBResponse extends HttpServlet {
                 colnameList.add(col_name);
             }
         }
-        writeLog(sql);
+        writeLog(pstmt.toString());
         return colnameList;
     }
 
@@ -243,6 +291,14 @@ public class DBResponse extends HttpServlet {
         return dataList;
     }
 
+    /**
+     * 插入一条数据
+     * @param tblname
+     * @param data_map
+     * @param out
+     * @return
+     * @throws SQLException
+     */
     public boolean insertIntoTable(String tblname, Map<String, String> data_map, PrintWriter out) throws SQLException {
         if (!getTableNames().contains(tblname)) {
             out.println("插入失败，没有指定表名的相关数据:" + tblname);
@@ -279,6 +335,114 @@ public class DBResponse extends HttpServlet {
 
         writeLog(sql);
         return true;
+    }
+
+    /**
+     * 删除一条数据
+     * @param tblname
+     * @param data_map
+     * @param out
+     * @return
+     * @throws SQLException
+     */
+    public boolean deleteFromTable(String tblname, Map<String, String> data_map, PrintWriter out) throws SQLException {
+        if (!getTableNames().contains(tblname)) {
+            out.println("删除失败，没有指定表名的相关数据:" + tblname);
+            return false;
+        }
+        StringBuffer str = new StringBuffer();
+        //获取主键
+        List<String> pri_list = getPrimaryKey(tblname);
+
+        for (String colname : pri_list) {
+            String value = data_map.get(colname);
+            if (value == null || value.isEmpty()) {
+                out.println("删除失败，缺少列:" + colname);
+                return false;
+            }
+            str.append(colname + "='" + value + "' and ");
+        }
+        String sql_str = str.substring(0, str.length() - 5);
+
+        String sql = "delete from " + tblname + " where " + sql_str;
+        int lineno = stmt.executeUpdate(sql);
+        if (lineno < 1) {
+            out.println("删除失败，数据有误");
+            return false;
+        }
+        out.println("删除成功!");
+
+        writeLog(sql);
+        return true;
+    }
+
+    /**
+     * 更新一条数据
+     * @param tblname
+     * @param old_data_map 旧值
+     * @param new_data_map 新值
+     * @param out
+     * @return
+     * @throws SQLException
+     */
+    public boolean updateFromTable(String tblname, Map<String, String> old_data_map, Map<String, String> new_data_map,
+            PrintWriter out) throws SQLException {
+        if (!getTableNames().contains(tblname)) {
+            out.println("删除失败，没有指定表名的相关数据:" + tblname);
+            return false;
+        }
+        StringBuffer where_str = new StringBuffer();
+        StringBuffer set_str = new StringBuffer();
+
+        List<String> pri_list = getPrimaryKey(tblname);
+
+        //构造where语句
+        for (String colname : pri_list) {
+            String value = old_data_map.get(colname);
+            if (value == null || value.isEmpty()) {
+                out.println("更新失败，缺少列:" + colname);
+                return false;
+            }
+            where_str.append(colname + "='" + value + "' and ");
+        }
+        String where_str_sql = where_str.substring(0, where_str.length() - 5);
+
+        //构造set语句
+        for (String colname : new_data_map.keySet()) {
+            String value = new_data_map.get(colname);
+            set_str.append(colname + "='" + value + "',");
+        }
+        String set_str_sql = set_str.substring(0, set_str.length() - 1);
+
+        String sql = "update " + tblname + " set " + set_str_sql + " where " + where_str_sql;
+        int res = stmt.executeUpdate(sql);
+        if (res < 1) {
+            out.println("更新失败，数据有误");
+            return false;
+        }
+        writeLog(sql);
+        out.println("更新成功!");
+        return true;
+    }
+
+    /**
+     * 查询指定表的主键
+     * @param tblname
+     * @return
+     * @throws SQLException
+     */
+    public List<String> getPrimaryKey(String tblname) throws SQLException {
+        List<String> list = new ArrayList<>();
+
+        String sql = " select column_name from information_schema.key_column_usage where table_schema='education' and constraint_name='primary' and table_name=?";
+        java.sql.PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setObject(1, tblname);
+        ResultSet sql_res = pstmt.executeQuery();
+        while (sql_res.next()) {
+            list.add(sql_res.getString(1));
+        }
+        writeLog(pstmt.toString());
+        return list;
     }
 
     private void writeLog(String data) {

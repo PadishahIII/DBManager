@@ -110,10 +110,84 @@ function insertIntoTable(tblname, data_map) {
     alert(data)
 
 }
+
+/**
+ * 删除指定表的一条数据
+ * @param {*} tblname 
+ * @param {*} data_map 
+ */
+function deleteFromTable(tblname, data_map) {
+    if (data_map.size != ColumnInfo.get(tblname).length) {
+        alert("Error1 at deleteFromTable!")
+        return false
+    }
+    var postString = new String()
+    for (var i of data_map.keys()) {
+        postString += i
+        postString += '=' + data_map.get(i)
+        postString += "&"
+    }
+    postString = postString.slice(0, postString.length - 1)
+    console.log("poststr:")
+    console.log("tblname=" + tblname + "&" + postString)
+    xmlhttp = new XMLHttpRequest()
+    xmlhttp.open("POST", "/DBManager/delete", false)
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    xmlhttp.send("tblname=" + tblname + "&" + postString)
+
+    var data = xmlhttp.responseText
+    alert(data)
+}
+
+/**
+ * 更新一条数据
+ * 发送格式：
+ * tblname=xx
+ * data_map_json:
+ * {
+ *  "old":{
+ *         "col1":value1,
+ *         "col2":value2...
+ *        }
+ *  "new":{同old}
+ * }
+ * @param {*} tblname 
+ * @param {Map} old_data_map 旧值
+ * @param {Map} new_data_map 新值
+ * @returns 
+ */
+function updateFromTable(tblname, old_data_map, new_data_map) {
+    var old_jsonstr = JSON.stringify(Map2Obj(old_data_map))
+    var new_jsonstr = JSON.stringify(Map2Obj(new_data_map))
+    var data_map_json = {
+        "old": old_jsonstr,
+        "new": new_jsonstr
+    }
+    var data_map_jsonstr = JSON.stringify(data_map_json)
+
+    console.log(data_map_jsonstr)
+
+    xmlhttp = new XMLHttpRequest()
+    xmlhttp.open("POST", "/DBManager/update", false)
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    xmlhttp.send("tblname=" + tblname + "&data_map_json=" + data_map_jsonstr)
+
+    var data = xmlhttp.responseText
+    alert(data)
+}
+function Map2Obj(map) {
+    let obj = Object.create(null)
+    for (let [k, v] of map) {
+        obj[k] = v
+    }
+    return obj
+}
 //var data_map = new Map()
 //data_map.set("id", 1)
 //data_map.set("name", "aa")
 //data_map.set("funding", "200")
+//var str = JSON.stringify(Map2Obj(data_map))
+//console.log(str)
 //for (var i of data_map) {
 //    console.log(i)
 //    console.log(data_map.get(i))

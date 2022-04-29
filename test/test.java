@@ -121,7 +121,7 @@ public class test {
     }
 
     @Test
-    public void DBResponseTest() throws SQLException, FileNotFoundException {
+    public void DBResponseTest1() throws SQLException, FileNotFoundException {
         DBResponse dbResponse = new DBResponse();
         //get columns
         List<String> list = dbResponse.getColumnNames("course");
@@ -142,6 +142,34 @@ public class test {
         //PrintWriter p = new PrintWriter(System.out);
         //dbResponse.insertIntoTable("faculty", data_map, p);
 
+        //get primary key
+        List<String> pri_list = dbResponse.getPrimaryKey("study_relation");
+        for (String i : pri_list) {
+            System.out.println(i);
+        }
+
+    }
+
+    @Test
+    public void DBResponseDeleteTest() throws SQLException, FileNotFoundException {
+        DBResponse dbResponse = new DBResponse();
+        //delete
+        Map<String, String> data_map = new HashMap<>();
+        data_map.put("id", "4");
+        PrintWriter p = new PrintWriter(System.out);
+        dbResponse.deleteFromTable("faculty", data_map, p);
+    }
+
+    @Test
+    public void DBResponseUpdateTest() throws SQLException, FileNotFoundException {
+        DBResponse dbResponse = new DBResponse();
+        //update
+        Map<String, String> old_data_map = new HashMap<>();
+        Map<String, String> new_data_map = new HashMap<>();
+        old_data_map.put("id", "3");
+        new_data_map.put("name", "newname");
+        PrintWriter p = new PrintWriter(System.out);
+        dbResponse.updateFromTable("faculty", old_data_map, new_data_map, p);
     }
 
     public static void main(String[] args) throws UnsupportedEncodingException {
