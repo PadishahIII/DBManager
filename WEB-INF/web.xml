@@ -27,6 +27,14 @@
      Welcome to Tomcat
   </description>
   <servlet>
+  	<servlet-name>app</servlet-name>
+  	<servlet-class>app</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>app</servlet-name>
+  	<url-pattern>/app</url-pattern>
+  </servlet-mapping>
+  <servlet>
   	<servlet-name>Login</servlet-name>
   	<servlet-class>Login</servlet-class>
   </servlet>
@@ -35,12 +43,17 @@
   	<url-pattern>/login</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>app</servlet-name>
-  	<servlet-class>app</servlet-class>
+  	<servlet-name>DBResponse</servlet-name>
+  	<servlet-class>DBResponse</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>app</servlet-name>
-  	<url-pattern>/app</url-pattern>
+  	<servlet-name>DBResponse</servlet-name>
+  	<url-pattern>/getTables</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DBResponse</servlet-name>
+  	<url-pattern>/queryAllData</url-pattern>
+  </servlet-mapping>
+  
 
 </web-app>

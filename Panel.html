@@ -3,13 +3,23 @@
     <head>
         <script>
             window.onload=function(){
-                let username = getCookieValue('username')
-                if(username=='')
-                {
-                    let atag = document.createElement('a')
-                    let href  = "./Login.html"
-                    atag.href = href
-                    atag.click()
+                //let username = getCookieValue('username')
+                //if(username=='')
+                //{
+                //    let atag = document.createElement('a')
+                //    let href  = "./Login.html"
+                //    atag.href = href
+                //    atag.click()
+                //}
+                //申请表信息
+                getTables()
+                console.log(TableNames)
+                console.log(ColumnInfo)
+                getTableData("faculty")
+                var faculty_data = TableData.get("faculty")
+                console.log(faculty_data)
+                for(var col in faculty_data){
+                    console.log(faculty_data[col])
                 }
             }
         </script>
@@ -54,6 +64,7 @@
         <script src="js/jsencrypt.min.js"></script>
         <script src="js/mycrypto.js"></script>
         <script src="js/cookie.js"></script>
+        <script src="js/DBQuery.js"></script>
         <script type="text/javascript"></script>
     </body>
 </html>
