@@ -182,6 +182,54 @@ function Map2Obj(map) {
     }
     return obj
 }
+
+/**
+ * 生成指定大小的表格
+ * @param {*} row 
+ * @param {*} col 
+ * @param {*} data_arr row大小的数组，每个元素为col大小的数组
+ */
+function generateTable2D(row, col, data_arr) {
+    table = document.createElement("table")
+    tBody = document.createElement("tBody")
+    for (var i = 0; i < row; i++) {
+        tr = tBody.insertRow(i)
+        var arr = data_arr[i]
+        for (var j = 0; j < col; j++) {
+            td = tr.insertCell(j)
+            td.innerHTML = arr[j]
+        }
+    }
+    table.appendChild(tBody)
+    document.body.appendChild(table)
+}
+/**
+ * 生成一维纵向或横向表
+ * @param {*} num 
+ * @param {*} data_arr 
+ * @param {*} type 0 for 纵向  1 for 横向
+ */
+function generateTable1D(num, data_arr, type) {
+    table = document.createElement("table")
+    tBody = document.createElement("tBody")
+    if (type == 0) {
+        for (var i = 0; i < num; i++) {
+            tr = tBody.insertRow(i)
+            td = tr.insertCell(0)
+            td.innerHTML = data_arr[i]
+        }
+    }
+    else if (type == 1) {
+        tr = tBody.insertRow(0)
+        for (var i = 0; i < num; i++) {
+            td = tr.insertCell(i)
+            td.innerHTML = data_arr[i]
+        }
+    }
+    else console.log("Error in generateTable1D")
+    table.appendChild(tBody)
+    document.body.appendChild(table)
+}
 //var data_map = new Map()
 //data_map.set("id", 1)
 //data_map.set("name", "aa")
