@@ -1,12 +1,21 @@
 import static org.junit.Assert.assertArrayEquals;
 import MyProtocol.MyProtocol;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
+import java.sql.SQLException;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Base64;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.crypto.BadPaddingException;
@@ -111,18 +120,32 @@ public class test {
 
     }
 
+    @Test
+    public void DBResponseTest() throws SQLException, FileNotFoundException {
+        DBResponse dbResponse = new DBResponse();
+        //get columns
+        List<String> list = dbResponse.getColumnNames("course");
+        for (String i : list) {
+            System.out.println(i);
+        }
+        //select *
+        List<String> dList = dbResponse.queryAllData("faculty");
+        for (String i : dList) {
+            System.out.println(i);
+        }
+
+        //insert
+        //Map<String, String> data_map = new HashMap<>();
+        //data_map.put("id", "4");
+        //data_map.put("name", "cc");
+        //data_map.put("funding", "345");
+        //PrintWriter p = new PrintWriter(System.out);
+        //dbResponse.insertIntoTable("faculty", data_map, p);
+
+    }
+
     public static void main(String[] args) throws UnsupportedEncodingException {
-        Base64.Decoder base64dec = Base64.getDecoder();
-        String key = "QzWvBsTj3RA6b1CkrBZQyBDmAWW0man1XB5KBn0ILB3MVHf1k6Yk3oCC2VrEQIh0Ze3ZpX3N3JoAEvf9YPVdEb9zIgnAbnpZVc5P1m28T4oRCFWJeYavuKl+YnvPa0iCOY2wXHjhWTSctMaD5Cf4UOToDSbQQxotqp/J30bmSdA=";
-        byte[] key_dec = base64dec.decode(key);
-        System.out.println(key_dec.toString().length());
-
-        System.out.println(MyProtocol.bytes2HexString(key_dec));
-
-        String a = "boZqfHIcvsdx6ubS7X+tDLzm8EUiY1NwzU/QCYAsohGYF4MZ2OOv4p51JSpUAM8frhLJrcE/NVjvtosSGyUv9kk9dLzj9s66mVb06eoWTU2QjIdyYLmYyYHqFBTGwLBxPPQOkRltWJ0wJq1lnIIVYpDxBGYvLIbZ5QkRkAsmiec=";
-        String aa = URLDecoder.decode(
-                a,
-                "UTF-8");
-        System.out.println(aa);
+        Timestamp timestamp = new Timestamp(new Date().getTime());
+        System.out.println(timestamp.toString());
     }
 }

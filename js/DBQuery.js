@@ -16,7 +16,7 @@ function getTables() {
     xmlhttp.send()
     var data = xmlhttp.responseText
     //alert(data)
-    //console.log(data)
+    console.log(data)
     var json = JSON.parse(data)
     TableNames['num'] = json['num']
     var tblnames = json['tblnames'].split(';')
@@ -46,26 +46,27 @@ function getTables() {
  * 返回结果：
  * {
  *  "num":9   //元组个数
- *  "col1":"aa;bb;cc;"
- *  "col2":"dd;ee;"
+ *  "0":"aa;bb;cc;"
+ *  "1":"dd;ee;ff"
  *  ...
  * }
  */
 var TableData = new Map()// tblname => data_array
 function getTableData(tblname) {
     xmlhttp = new XMLHttpRequest()
-    xmlhttp.open("GET", "/DBManager/queryAllData", false)
+    xmlhttp.open("GET", "/DBManager/queryAllData?tblname=" + tblname, false)
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-    xmlhttp.send("tblname=" + tblname)
+    xmlhttp.send()
     var data = xmlhttp.responseText
+
+    //alert(data)
     var json = JSON.parse(data)
 
     var num = json['num']
-    //该表的所有字段名
-    var columns = ColumnInfo.get(tblname)
     var col_datas = new Array()
-    for (var i in columns) {
-        var col_data_str = json[columns[i]]
+    var i = 0
+    while (i < num) {
+        var col_data_str = json[String(i)]
         var col_data_strs = col_data_str.split(";")
         var col_data_arr = new Array()
         for (var j in col_data_strs) {
@@ -74,15 +75,66 @@ function getTableData(tblname) {
             }//if
         }//for j
         col_datas.push(col_data_arr)
-    }//for i
+        i++
+    }//while i
     TableData.set(tblname, col_datas)
 
 }
-var arr = new Array(4, 5)
-for (var i in arr) {
-    console.log(i)
-}
 
+/**
+ * 向指定表插入一个元组
+ * data_map:<列名，属性值>
+ * @param {*} tblname 
+ * @param {*} data_map 
+ */
+function insertIntoTable(tblname, data_map) {
+    if (data_map.size != ColumnInfo.get(tblname).length) {
+        alert("Error1 at insertIntoTable!")
+        return false
+    }
+    var postString = new String()
+    for (var i of data_map.keys()) {
+        postString += i
+        postString += '=' + data_map.get(i)
+        postString += "&"
+    }
+    postString = postString.slice(0, postString.length - 1)
+    console.log("poststr:")
+    console.log("tblname=" + tblname + "&" + postString)
+    xmlhttp = new XMLHttpRequest()
+    xmlhttp.open("POST", "/DBManager/insert", false)
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    xmlhttp.send("tblname=" + tblname + "&" + postString)
+
+    var data = xmlhttp.responseText
+    alert(data)
+
+}
+//var data_map = new Map()
+//data_map.set("id", 1)
+//data_map.set("name", "aa")
+//data_map.set("funding", "200")
+//for (var i of data_map) {
+//    console.log(i)
+//    console.log(data_map.get(i))
+//}
+//var s = new String("abc")
+//console.log(s.length)
+//console.log(s.substring(0, s.length - 1))
+//console.log(s.slice(0, s.length - 1))
+//var arr = new Array()
+//arr.push(1)
+//console.log(arr.length)
+//
+//var map = new Map()
+//map.set("a", 1)
+//map.set("b", 2)
+//console.log(map.keys())
+//for (var i of map.keys()) {
+//    console.log(i)
+//    console.log(map.get(i))
+//}
+//console.log(map.size)
 /**
  * 获取
  */

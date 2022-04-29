@@ -54,6 +54,10 @@
   	<servlet-name>DBResponse</servlet-name>
   	<url-pattern>/queryAllData</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DBResponse</servlet-name>
+  	<url-pattern>/insert</url-pattern>
+  </servlet-mapping>
   
 
 </web-app>

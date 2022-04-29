@@ -14,6 +14,7 @@
                 //申请表信息
                 getTables()
                 console.log(TableNames)
+                console.log("columnInfo:")
                 console.log(ColumnInfo)
                 getTableData("faculty")
                 var faculty_data = TableData.get("faculty")
@@ -21,6 +22,11 @@
                 for(var col in faculty_data){
                     console.log(faculty_data[col])
                 }
+                var data_map = new Map()
+                data_map.set("id","5")
+                data_map.set("name","dd")
+                data_map.set("funding","200")
+                insertIntoTable("faculty",data_map)
             }
         </script>
         <meta charset="utf-8">
