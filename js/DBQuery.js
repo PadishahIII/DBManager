@@ -11,11 +11,10 @@ class TeacherInfoPage {
     QueryDiv;
     QueryTable;
     DeleteDiv;
-    constructor() {
-
-    }
     constructor(tblname) {
         this.tblname = tblname;
+    }
+    display() {
         TeacherInfoPage.clean();
         TeacherInfoPage.DisplayData();
         this.buildInsertDiv();
