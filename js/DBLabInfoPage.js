@@ -1,9 +1,11 @@
-class StudentInfoPage extends TeacherInfoPage {
-    static TblName = 'student';
+class LabInfoPage extends TeacherInfoPage {
+    static TblName = 'laboratory';
     constructor(tblname) {
-        this.tblname = tblname;
-        StudentInfoPage.clean();
-        StudentInfoPage.DisplayData();
+        super(tblname);
+    }
+    display() {
+        LabInfoPage.clean();
+        LabInfoPage.DisplayData();
         this.buildInsertDiv();
         this.buildQueryDiv();
         this.buildDeleteDiv();
@@ -27,15 +29,15 @@ class StudentInfoPage extends TeacherInfoPage {
         }
     }
     static DisplayData() {
-        getTableData(StudentInfoPage.TblName);
-        var tabledata = TableData.get(StudentInfoPage.TblName);
+        getTableData(LabInfoPage.TblName);
+        var tabledata = TableData.get(LabInfoPage.TblName);
         if (tabledata == null || tabledata.length == 0) return;
         var append = true;
         if (this.InfoTable != null) {
             this.InfoTable.remove();
             append = false;
         }
-        this.InfoTable = generateTable2D(tabledata.length, tabledata[0].length, tabledata, StudentInfoPage.TblName);
+        this.InfoTable = generateTable2D(tabledata.length, tabledata[0].length, tabledata, LabInfoPage.TblName);
         this.InfoTable.id = "InfoTable";
         if (append)
             document.getElementById('mid').appendChild(this.InfoTable);
@@ -46,13 +48,13 @@ class StudentInfoPage extends TeacherInfoPage {
 
     }
     static DisplayQueryResult() {
-        getTableData(StudentInfoPage.TblName);
+        getTableData(LabInfoPage.TblName);
         if (this.QueryTable != null) {
             this.QueryTable.remove();
         }
-        var tabledata = QueryResult.get(StudentInfoPage.TblName);
+        var tabledata = QueryResult.get(LabInfoPage.TblName);
         if (tabledata == null || tabledata.length == 0) return;
-        this.QueryTable = generateTable2D(tabledata.length, tabledata[0].length, tabledata, StudentInfoPage.TblName);
+        this.QueryTable = generateTable2D(tabledata.length, tabledata[0].length, tabledata, LabInfoPage.TblName);
         document.getElementById('mid').appendChild(this.QueryTable);
     }
     buildInsertDiv() {
@@ -74,7 +76,7 @@ class StudentInfoPage extends TeacherInfoPage {
         var button = document.createElement('button');
         button.onclick = function () {
             var data_map = new Map();
-            var colnames = ColumnInfo.get(StudentInfoPage.TblName);
+            var colnames = ColumnInfo.get(LabInfoPage.TblName);
 
             var children = div.children;
             var index = 0;
@@ -88,8 +90,8 @@ class StudentInfoPage extends TeacherInfoPage {
                     data_map.set(colnames[index++], value);
                 }//if
             }//for
-            insertIntoTable(StudentInfoPage.TblName, data_map);
-            StudentInfoPage.DisplayData();
+            insertIntoTable(LabInfoPage.TblName, data_map);
+            LabInfoPage.DisplayData();
         }//function
         button.width = "30px";
         button.innerHTML = "提交";
@@ -114,7 +116,7 @@ class StudentInfoPage extends TeacherInfoPage {
         var button = document.createElement('button');
         button.onclick = function () {
             var whereClause = new String();
-            var colnames = ColumnInfo.get(StudentInfoPage.TblName);
+            var colnames = ColumnInfo.get(LabInfoPage.TblName);
             var children = div.children;
             var index = 0;
             for (var i in children) {
@@ -129,8 +131,8 @@ class StudentInfoPage extends TeacherInfoPage {
             }//for
             whereClause = whereClause.substring(0, whereClause.length - 5);
             //alert(whereClause);
-            queryTableData(StudentInfoPage.TblName, whereClause);
-            StudentInfoPage.DisplayQueryResult();
+            queryTableData(LabInfoPage.TblName, whereClause);
+            LabInfoPage.DisplayQueryResult();
         }//function
         button.width = "30px";
         button.innerHTML = "提交";
@@ -154,7 +156,7 @@ class StudentInfoPage extends TeacherInfoPage {
         var button = document.createElement('button');
         button.onclick = function () {
             var whereClause = new String();
-            var colnames = ColumnInfo.get(StudentInfoPage.TblName);
+            var colnames = ColumnInfo.get(LabInfoPage.TblName);
 
             var data_map = new Map();
 
@@ -169,8 +171,8 @@ class StudentInfoPage extends TeacherInfoPage {
                     index++;
                 }//if
             }//for
-            deleteFromTable(StudentInfoPage.TblName, data_map);
-            StudentInfoPage.DisplayData();
+            deleteFromTable(LabInfoPage.TblName, data_map);
+            LabInfoPage.DisplayData();
         }//function
         button.width = "30px";
         button.innerHTML = "提交";

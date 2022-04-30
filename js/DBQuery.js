@@ -1,7 +1,12 @@
 var TableData = new Map()// tblname => data_array
 var QueryResult = new Map()//同TableData
 var TableThreads = {
-    "teacher": ['ID', '姓名', '年龄', '工资', '研究方向', '科研项目', '实验室', '所在院系']
+    "teacher": ['ID', '姓名', '年龄', '工资', '研究方向', '科研项目', '实验室', '所在院系'],
+    "student": ['ID', '姓名', '性别', '年龄', '年级', '所在院系'],
+    "course": ['ID', '课程名', '学分', '所在教室'],
+    "laboratory": ['ID', '实验室名称'],
+    "faculty": ['ID', '院系名称', '资金'],
+    "project": ['ID', '项目名称']
 }
 class TeacherInfoPage {
     static TblName = 'teacher';

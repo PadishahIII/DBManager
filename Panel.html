@@ -118,12 +118,12 @@
             </div>
             <div id="main" class="markdown-preview-view markdown-rendered node-insert-event allow-fold-headings show-indentation-guide allow-fold-lists show-frontmatter">
                 <div id="left" class="markdown-preview-pusher">
-                    <button onclick="javascript:var t = new TeacherInfoPage('teacher');t.display();">教师信息</button>
-                    <button>实验室信息</button>
-                    <button>院系信息</button>
-                    <button>学生信息</button>
-                    <button>科研项目</button>
-                    <button>课程信息</button>
+                    <button onclick="javascript:var teacher = new TeacherInfoPage('teacher');teacher.display();">教师信息</button>
+                    <button onclick="javascript:var faculty = new FacultyInfoPage('faculty');faculty.display();">院系信息</button>
+                    <button onclick="javascript:var laboratory = new LabInfoPage('laboratory');laboratory.display();">实验室信息</button>
+                    <button onclick="javascript:var student = new StudentInfoPage('student');student.display();">学生信息</button>
+                    <button onclick="javascript:var project = new ProjectInfoPage('project');project.display();">科研项目</button>
+                    <button onclick="javascipt:var course = new CourseInfoPage('course');course.display();">课程信息</button>
                 </div>
                 <div id="mid">
                     <!--<table>
@@ -155,7 +155,11 @@
         <script src="js/mycrypto.js"></script>
         <script src="js/cookie.js"></script>
         <script src="js/DBQuery.js"></script>
-        <script src="js/DBClass.js"></script>
+        <script src="js/DBStudentInfoPage.js"></script>
+        <script src="js/DBCourseInfoPage.js"></script>
+        <script src="js/DBLabInfoPage.js"></script>
+        <script src="js/DBFacultyInfoPage.js"></script>
+        <script src="js/DBProject.js"></script>
         <script type="text/javascript">
             generateTable1D(TableNames.length,TableNames,0)
             //table = document.createElement("table")
