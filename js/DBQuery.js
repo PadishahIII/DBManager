@@ -8,6 +8,12 @@ var TableThreads = {
     "faculty": ['ID', '院系名称', '资金'],
     "project": ['ID', '项目名称']
 }
+var TextToColumnName = {
+    "研究方向": "direction.name",
+    "科研项目": "project.name",
+    "实验室": "laboratory.name",
+    "所在院系": "faculty.name"
+}
 class TeacherInfoPage {
     static TblName = 'teacher';
     tblname;
@@ -45,8 +51,12 @@ class TeacherInfoPage {
         }
     }
     static DisplayData() {
-        getTableData(TeacherInfoPage.TblName);
-        var tabledata = TableData.get(TeacherInfoPage.TblName);
+        //getTableData(TeacherInfoPage.TblName);
+        var tblNameList = ["teacher", "direction", "project", "laboratory", "faculty"];
+        var JoinClause = ["teacher.dno", "direction.id", "teacher.pno", "project.id", "teacher.lno", "laboratory.id", "teacher.fno", "faculty.id"];
+        queryWithNaturalJoin(tblNameList, JoinClause, '');
+
+        var tabledata = QueryResult.get(TeacherInfoPage.TblName);
         if (tabledata == null || tabledata.length == 0) return;
         var append = true;
         if (this.InfoTable != null) {
@@ -64,7 +74,7 @@ class TeacherInfoPage {
 
     }
     static DisplayQueryResult() {
-        getTableData(TeacherInfoPage.TblName);
+        //getTableData(TeacherInfoPage.TblName);
         if (this.QueryTable != null) {
             this.QueryTable.remove();
         }
@@ -138,16 +148,25 @@ class TeacherInfoPage {
             for (var i in children) {
                 if (children[i].localName == 'input') {
                     var value = children[i].value;
+                    var placeholder = children[i].placeholder;
+                    var columnname
+                    if (TextToColumnName[placeholder] == null)
+                        columnname = TeacherInfoPage.TblName + "." + colnames[index];
+                    else
+                        columnname = TextToColumnName[placeholder];
                     if (value != '') {
                         //加到whereClause中
-                        whereClause += (colnames[index] + '=\'' + value + '\' and ');
+                        whereClause += (columnname + '=\'' + value + '\' and ');
                     }
                     index++;
                 }//if
             }//for
             whereClause = whereClause.substring(0, whereClause.length - 5);
             //alert(whereClause);
-            queryTableData(TeacherInfoPage.TblName, whereClause);
+            var tblNameList = ["teacher", "direction", "project", "laboratory", "faculty"];
+            var JoinClause = ["teacher.dno", "direction.id", "teacher.pno", "project.id", "teacher.lno", "laboratory.id", "teacher.fno", "faculty.id"];
+            queryWithNaturalJoin(tblNameList, JoinClause, whereClause);
+            //queryTableData(TeacherInfoPage.TblName, whereClause);
             TeacherInfoPage.DisplayQueryResult();
         }//function
         button.width = "30px";
@@ -305,9 +324,9 @@ function queryTableData(tblname, whereClause) {
     xmlhttp.send("tblname=" + tblname + "&whereClause=" + whereClause)
     var data = xmlhttp.responseText
 
-    if (data[0] != '{') {
-        alert(data)
-    }
+    //if (data[0] != '{') {
+    //alert(data)
+    //}
     var json = JSON.parse(data)
 
     var num = json['num']
@@ -325,7 +344,43 @@ function queryTableData(tblname, whereClause) {
         col_datas.push(col_data_arr)
         i++
     }//while i
-    QueryResult.set(tblname, col_datas)
+    QueryResult.set(tblname.split(',')[0], col_datas)
+}
+/**
+ * 自然连接查询
+ * @param {Array} tblNameList 查询需要的表 tb1 tb2
+ * @param {Array} JoinClause 自然连接的条件  tbl1.a = tb2.b  
+ * @param {*} whereClause 查询条件
+ * 发送格式：
+ * tblnames:用逗号隔开的表名
+ * whereClause:完整的where子句
+ */
+function queryWithNaturalJoin(tblNameList, JoinClause, whereClause) {
+    var tblnames = new String()
+    for (var i in tblNameList) {
+        tblnames += tblNameList[i]
+        tblnames += ','
+    }
+    tblnames = tblnames.substring(0, tblnames.length - 1)
+    //alert(tblnames)
+
+    var joincondition = new String();
+    var len = JoinClause.length
+    var index = 0
+    while (index + 1 < len) {
+        joincondition += JoinClause[index]
+        joincondition += '='
+        joincondition += JoinClause[index + 1]
+        joincondition += ' and '
+        index += 2
+    }
+    if (whereClause == '')
+        joincondition = joincondition.substring(0, joincondition.length - 5)
+    var whereCondition = joincondition + whereClause
+    //alert(whereCondition)
+
+    queryTableData(tblnames, whereCondition)
+
 }
 
 /**
@@ -526,27 +581,31 @@ function AddThreadToTable(tblname, tableobj) {
 /**
  * 获取
  */
+//
+//class a {
+//    n;
+//    static s;
+//    constructor(nn) {
+//        this.n = nn;
+//        console.log("a");
+//    }
+//    func() {
+//        console.log("func");
+//    }
+//}
+//class b extends a {
+//    constructor(nn) {
+//        //super(nn);
+//        console.log("b");
+//    }
+//    func() {
+//        console.log("bfunc");
+//    }
+//}
+//var bb = new b("b");
+//console.log(bb.n);
+//bb.func();
 
-class a {
-    n;
-    static s;
-    constructor(nn) {
-        this.n = nn;
-        console.log("a");
-    }
-    func() {
-        console.log("func");
-    }
-}
-class b extends a {
-    constructor(nn) {
-        //super(nn);
-        console.log("b");
-    }
-    func() {
-        console.log("bfunc");
-    }
-}
-var bb = new b("b");
-console.log(bb.n);
-bb.func();
+//var s = 'a'
+//console.log(s.split(',')[0])
+//console.log(TextToColumnName['a'] == null)

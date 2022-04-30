@@ -4723,3 +4723,503 @@
 [2022-04-30 20:09:45.968]:insert into student (id,name,sex,age,grade,fno) values ('2','Jeffery','male','12','大二','1')
 [2022-04-30 20:09:46.757]:com.mysql.jdbc.JDBC42PreparedStatement@3c1a5790: select column_name from information_schema.columns where table_schema='education' and table_name='student'
 [2022-04-30 20:09:46.757]:select * from student
+[2022-04-30 20:11:22.355]:show tables;
+[2022-04-30 20:11:22.356]:com.mysql.jdbc.JDBC42PreparedStatement@5c0a0911: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 20:11:22.356]:com.mysql.jdbc.JDBC42PreparedStatement@367f83e7: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 20:11:22.357]:com.mysql.jdbc.JDBC42PreparedStatement@64ac638f: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:11:22.358]:com.mysql.jdbc.JDBC42PreparedStatement@19640ad2: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 20:11:22.359]:com.mysql.jdbc.JDBC42PreparedStatement@152ada6e: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 20:11:22.359]:com.mysql.jdbc.JDBC42PreparedStatement@5f001397: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 20:11:22.36]:com.mysql.jdbc.JDBC42PreparedStatement@5837a3e3: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:11:22.36]:com.mysql.jdbc.JDBC42PreparedStatement@61bc00ad: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:11:22.361]:com.mysql.jdbc.JDBC42PreparedStatement@22864f5e: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 20:11:22.361]:com.mysql.jdbc.JDBC42PreparedStatement@7dc57c32: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:11:22.361]:com.mysql.jdbc.JDBC42PreparedStatement@1808f0d2: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:11:22.362]:com.mysql.jdbc.JDBC42PreparedStatement@19b02216: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 20:11:22.362]:com.mysql.jdbc.JDBC42PreparedStatement@95c62c1: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 20:11:22.362]:com.mysql.jdbc.JDBC42PreparedStatement@5faeab34: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:11:22.368]:com.mysql.jdbc.JDBC42PreparedStatement@44d36330: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:11:22.368]:select * from faculty
+[2022-04-30 20:11:23.411]:com.mysql.jdbc.JDBC42PreparedStatement@357a85b7: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:11:23.412]:select * from student
+[2022-04-30 20:11:26.291]:com.mysql.jdbc.JDBC42PreparedStatement@62bd3187: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:11:26.292]:select * from teacher where id='1'
+[2022-04-30 20:11:26.299]:com.mysql.jdbc.JDBC42PreparedStatement@5255bb43: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:11:26.299]:select * from teacher
+[2022-04-30 20:16:35.353]:show tables;
+[2022-04-30 20:16:35.354]:com.mysql.jdbc.JDBC42PreparedStatement@3b02f71e: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 20:16:35.355]:com.mysql.jdbc.JDBC42PreparedStatement@2dc7af35: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 20:16:35.355]:com.mysql.jdbc.JDBC42PreparedStatement@4c71c007: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:16:35.356]:com.mysql.jdbc.JDBC42PreparedStatement@2b33644e: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 20:16:35.357]:com.mysql.jdbc.JDBC42PreparedStatement@7a5cc31: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 20:16:35.358]:com.mysql.jdbc.JDBC42PreparedStatement@170b65f7: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 20:16:35.358]:com.mysql.jdbc.JDBC42PreparedStatement@5538fee9: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:16:35.359]:com.mysql.jdbc.JDBC42PreparedStatement@6519e114: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:16:35.359]:com.mysql.jdbc.JDBC42PreparedStatement@4c747dc2: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 20:16:35.359]:com.mysql.jdbc.JDBC42PreparedStatement@9c8d66: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:16:35.36]:com.mysql.jdbc.JDBC42PreparedStatement@1241e42a: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:16:35.36]:com.mysql.jdbc.JDBC42PreparedStatement@387aa637: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 20:16:35.361]:com.mysql.jdbc.JDBC42PreparedStatement@570f4697: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 20:16:35.361]:com.mysql.jdbc.JDBC42PreparedStatement@339c06ad: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:16:35.366]:com.mysql.jdbc.JDBC42PreparedStatement@7c5e0215: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:16:35.366]:select * from faculty
+[2022-04-30 20:16:37.417]:com.mysql.jdbc.JDBC42PreparedStatement@3bdc7ab8: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:16:37.418]:select * from student
+[2022-04-30 20:17:18.721]:show tables;
+[2022-04-30 20:17:18.722]:com.mysql.jdbc.JDBC42PreparedStatement@2071c6c5: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 20:17:18.722]:com.mysql.jdbc.JDBC42PreparedStatement@2358164b: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 20:17:18.723]:com.mysql.jdbc.JDBC42PreparedStatement@7ccd2bf3: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:17:18.723]:com.mysql.jdbc.JDBC42PreparedStatement@50907dc9: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 20:17:18.724]:com.mysql.jdbc.JDBC42PreparedStatement@7e79cef0: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 20:17:18.724]:com.mysql.jdbc.JDBC42PreparedStatement@1df0653a: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 20:17:18.725]:com.mysql.jdbc.JDBC42PreparedStatement@8f747c4: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:17:18.725]:com.mysql.jdbc.JDBC42PreparedStatement@5bda1d26: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:17:18.726]:com.mysql.jdbc.JDBC42PreparedStatement@6b6446e3: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 20:17:18.726]:com.mysql.jdbc.JDBC42PreparedStatement@75232700: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:17:18.727]:com.mysql.jdbc.JDBC42PreparedStatement@47d89707: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:17:18.727]:com.mysql.jdbc.JDBC42PreparedStatement@4ce091f7: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 20:17:18.727]:com.mysql.jdbc.JDBC42PreparedStatement@5fa85d6: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 20:17:18.728]:com.mysql.jdbc.JDBC42PreparedStatement@690da94e: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:17:18.734]:com.mysql.jdbc.JDBC42PreparedStatement@18477cf8: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:17:18.734]:select * from faculty
+[2022-04-30 20:17:18.964]:show tables;
+[2022-04-30 20:17:18.965]:com.mysql.jdbc.JDBC42PreparedStatement@906cd9e: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 20:17:18.965]:com.mysql.jdbc.JDBC42PreparedStatement@7cedbb1a: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 20:17:18.965]:com.mysql.jdbc.JDBC42PreparedStatement@24bc1785: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:17:18.966]:com.mysql.jdbc.JDBC42PreparedStatement@65f6f74d: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 20:17:18.967]:com.mysql.jdbc.JDBC42PreparedStatement@5a23bc50: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 20:17:18.967]:com.mysql.jdbc.JDBC42PreparedStatement@4b87e965: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 20:17:18.968]:com.mysql.jdbc.JDBC42PreparedStatement@fc3cfaf: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:17:18.968]:com.mysql.jdbc.JDBC42PreparedStatement@5ddd0d85: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:17:18.969]:com.mysql.jdbc.JDBC42PreparedStatement@1a5beb52: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 20:17:18.97]:com.mysql.jdbc.JDBC42PreparedStatement@6e63f5bd: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:17:18.97]:com.mysql.jdbc.JDBC42PreparedStatement@7f4cf169: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:17:18.97]:com.mysql.jdbc.JDBC42PreparedStatement@4ac87a20: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 20:17:18.971]:com.mysql.jdbc.JDBC42PreparedStatement@f8c1950: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 20:17:18.971]:com.mysql.jdbc.JDBC42PreparedStatement@7e33db01: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:17:18.977]:com.mysql.jdbc.JDBC42PreparedStatement@583d5178: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:17:18.977]:select * from faculty
+[2022-04-30 20:17:20.57]:com.mysql.jdbc.JDBC42PreparedStatement@7809d0d1: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:17:20.57]:select * from student
+[2022-04-30 20:17:41.989]:show tables;
+[2022-04-30 20:17:41.99]:com.mysql.jdbc.JDBC42PreparedStatement@c03b5d6: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 20:17:41.991]:com.mysql.jdbc.JDBC42PreparedStatement@7ad34384: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 20:17:41.992]:com.mysql.jdbc.JDBC42PreparedStatement@7691b861: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:17:41.993]:com.mysql.jdbc.JDBC42PreparedStatement@3d8e87e9: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 20:17:41.994]:com.mysql.jdbc.JDBC42PreparedStatement@2cb2288b: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 20:17:41.995]:com.mysql.jdbc.JDBC42PreparedStatement@4c1d91fa: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 20:17:41.996]:com.mysql.jdbc.JDBC42PreparedStatement@37346aa8: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:17:41.996]:com.mysql.jdbc.JDBC42PreparedStatement@7ecc0268: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:17:41.997]:com.mysql.jdbc.JDBC42PreparedStatement@43079b4a: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 20:17:41.997]:com.mysql.jdbc.JDBC42PreparedStatement@63b55091: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:17:41.998]:com.mysql.jdbc.JDBC42PreparedStatement@77c00765: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:17:41.998]:com.mysql.jdbc.JDBC42PreparedStatement@698184b7: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 20:17:41.999]:com.mysql.jdbc.JDBC42PreparedStatement@16a39f06: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 20:17:41.999]:com.mysql.jdbc.JDBC42PreparedStatement@5fdb649b: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:17:42.008]:com.mysql.jdbc.JDBC42PreparedStatement@6ffcd580: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:17:42.009]:select * from faculty
+[2022-04-30 20:17:44.437]:com.mysql.jdbc.JDBC42PreparedStatement@619eb9: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:17:44.437]:select * from student
+[2022-04-30 20:17:45.267]:com.mysql.jdbc.JDBC42PreparedStatement@2889e2ec: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:17:45.271]:select * from course
+[2022-04-30 20:19:04.288]:show tables;
+[2022-04-30 20:19:04.29]:com.mysql.jdbc.JDBC42PreparedStatement@60de2f6e: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 20:19:04.291]:com.mysql.jdbc.JDBC42PreparedStatement@63619d60: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 20:19:04.292]:com.mysql.jdbc.JDBC42PreparedStatement@6a381459: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:19:04.293]:com.mysql.jdbc.JDBC42PreparedStatement@4278560f: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 20:19:04.294]:com.mysql.jdbc.JDBC42PreparedStatement@534cb471: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 20:19:04.294]:com.mysql.jdbc.JDBC42PreparedStatement@3ca9a9e5: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 20:19:04.294]:com.mysql.jdbc.JDBC42PreparedStatement@1699e8f5: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:19:04.295]:com.mysql.jdbc.JDBC42PreparedStatement@16511c07: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:19:04.295]:com.mysql.jdbc.JDBC42PreparedStatement@2088dd80: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 20:19:04.296]:com.mysql.jdbc.JDBC42PreparedStatement@511faef5: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:19:04.296]:com.mysql.jdbc.JDBC42PreparedStatement@8982a63: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:19:04.296]:com.mysql.jdbc.JDBC42PreparedStatement@1637ae53: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 20:19:04.297]:com.mysql.jdbc.JDBC42PreparedStatement@70b505c8: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 20:19:04.297]:com.mysql.jdbc.JDBC42PreparedStatement@5cf1652d: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:19:04.303]:com.mysql.jdbc.JDBC42PreparedStatement@7e1652b: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:19:04.304]:select * from faculty
+[2022-04-30 20:19:05.025]:com.mysql.jdbc.JDBC42PreparedStatement@330714b4: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:19:05.026]:select * from course
+[2022-04-30 20:19:11.697]:com.mysql.jdbc.JDBC42PreparedStatement@5b985080: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:19:11.697]:select * from course where id='1'
+[2022-04-30 20:19:11.704]:com.mysql.jdbc.JDBC42PreparedStatement@51c1125f: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:19:11.706]:select * from course
+[2022-04-30 20:19:38.25]:show tables;
+[2022-04-30 20:19:38.251]:com.mysql.jdbc.JDBC42PreparedStatement@4d1636bb: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:19:38.287]:insert into course (id,name,credit,cno) values ('3','Network','2','2')
+[2022-04-30 20:19:39.424]:com.mysql.jdbc.JDBC42PreparedStatement@434794a5: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:19:39.425]:select * from course
+[2022-04-30 20:19:44.153]:show tables;
+[2022-04-30 20:19:44.156]:com.mysql.jdbc.JDBC42PreparedStatement@3e1de629: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:19:45.329]:com.mysql.jdbc.JDBC42PreparedStatement@41b26b5d: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:19:45.329]:select * from course
+[2022-04-30 20:19:50.521]:show tables;
+[2022-04-30 20:19:50.522]:com.mysql.jdbc.JDBC42PreparedStatement@226e06a9: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:19:51.828]:com.mysql.jdbc.JDBC42PreparedStatement@74390b67: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:19:51.829]:select * from course
+[2022-04-30 20:19:57.44]:com.mysql.jdbc.JDBC42PreparedStatement@e6f8da2: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:19:57.44]:select * from course where id='3'
+[2022-04-30 20:19:57.446]:com.mysql.jdbc.JDBC42PreparedStatement@22c92054: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:19:57.446]:select * from course
+[2022-04-30 20:20:01.553]:com.mysql.jdbc.JDBC42PreparedStatement@3c51d2b: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:20:01.553]:select * from course where cno='2'
+[2022-04-30 20:20:01.561]:com.mysql.jdbc.JDBC42PreparedStatement@58babd38: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:20:01.562]:select * from course
+[2022-04-30 20:20:04.946]:com.mysql.jdbc.JDBC42PreparedStatement@47c7cbb0: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:20:04.946]:select * from student
+[2022-04-30 20:23:08.428]:show tables;
+[2022-04-30 20:23:08.429]:com.mysql.jdbc.JDBC42PreparedStatement@770f5510: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 20:23:08.429]:com.mysql.jdbc.JDBC42PreparedStatement@6e262865: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 20:23:08.429]:com.mysql.jdbc.JDBC42PreparedStatement@5067e75: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:23:08.43]:com.mysql.jdbc.JDBC42PreparedStatement@1070389e: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 20:23:08.43]:com.mysql.jdbc.JDBC42PreparedStatement@1d5a5855: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 20:23:08.431]:com.mysql.jdbc.JDBC42PreparedStatement@42e03e9b: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 20:23:08.431]:com.mysql.jdbc.JDBC42PreparedStatement@74230564: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:23:08.431]:com.mysql.jdbc.JDBC42PreparedStatement@658667b6: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:23:08.432]:com.mysql.jdbc.JDBC42PreparedStatement@2ad113a3: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 20:23:08.432]:com.mysql.jdbc.JDBC42PreparedStatement@6906e484: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:23:08.433]:com.mysql.jdbc.JDBC42PreparedStatement@5e2d4e5: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:23:08.433]:com.mysql.jdbc.JDBC42PreparedStatement@538fb838: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 20:23:08.433]:com.mysql.jdbc.JDBC42PreparedStatement@7161e5e1: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 20:23:08.434]:com.mysql.jdbc.JDBC42PreparedStatement@2f9d0d8d: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:23:08.439]:com.mysql.jdbc.JDBC42PreparedStatement@784a0821: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:23:08.439]:select * from faculty
+[2022-04-30 20:23:53.818]:show tables;
+[2022-04-30 20:23:53.818]:com.mysql.jdbc.JDBC42PreparedStatement@122b80be: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 20:23:53.819]:com.mysql.jdbc.JDBC42PreparedStatement@6c1b21f7: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 20:23:53.819]:com.mysql.jdbc.JDBC42PreparedStatement@2badb89c: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:23:53.819]:com.mysql.jdbc.JDBC42PreparedStatement@4a8ce417: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 20:23:53.82]:com.mysql.jdbc.JDBC42PreparedStatement@4eca388: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 20:23:53.82]:com.mysql.jdbc.JDBC42PreparedStatement@314d3e7b: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 20:23:53.821]:com.mysql.jdbc.JDBC42PreparedStatement@77620996: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:23:53.821]:com.mysql.jdbc.JDBC42PreparedStatement@5a63f731: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:23:53.821]:com.mysql.jdbc.JDBC42PreparedStatement@3b72ff16: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 20:23:53.822]:com.mysql.jdbc.JDBC42PreparedStatement@6394a0e5: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:23:53.822]:com.mysql.jdbc.JDBC42PreparedStatement@4dd3bb8: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:23:53.823]:com.mysql.jdbc.JDBC42PreparedStatement@41c29e6d: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 20:23:53.823]:com.mysql.jdbc.JDBC42PreparedStatement@6de4430c: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 20:23:53.823]:com.mysql.jdbc.JDBC42PreparedStatement@2bb155dd: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:23:53.831]:com.mysql.jdbc.JDBC42PreparedStatement@70deb2ba: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:23:53.831]:select * from faculty
+[2022-04-30 20:24:23.44]:show tables;
+[2022-04-30 20:24:23.441]:com.mysql.jdbc.JDBC42PreparedStatement@13b874b8: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 20:24:23.442]:com.mysql.jdbc.JDBC42PreparedStatement@5c0bb9e0: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 20:24:23.443]:com.mysql.jdbc.JDBC42PreparedStatement@7d350001: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:24:23.443]:com.mysql.jdbc.JDBC42PreparedStatement@5e1567b4: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 20:24:23.444]:com.mysql.jdbc.JDBC42PreparedStatement@e58c57a: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 20:24:23.444]:com.mysql.jdbc.JDBC42PreparedStatement@f1db9e8: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 20:24:23.445]:com.mysql.jdbc.JDBC42PreparedStatement@5a7d9502: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:24:23.446]:com.mysql.jdbc.JDBC42PreparedStatement@2fa0613e: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:24:23.447]:com.mysql.jdbc.JDBC42PreparedStatement@671b02a5: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 20:24:23.447]:com.mysql.jdbc.JDBC42PreparedStatement@5ab3557: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:24:23.448]:com.mysql.jdbc.JDBC42PreparedStatement@33487565: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:24:23.449]:com.mysql.jdbc.JDBC42PreparedStatement@1fcd5ba3: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 20:24:23.45]:com.mysql.jdbc.JDBC42PreparedStatement@20fc6cd5: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 20:24:23.45]:com.mysql.jdbc.JDBC42PreparedStatement@7c21f410: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:24:23.459]:com.mysql.jdbc.JDBC42PreparedStatement@1690806e: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:24:23.459]:select * from faculty
+[2022-04-30 20:24:24.975]:com.mysql.jdbc.JDBC42PreparedStatement@3d2b93ad: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:24:25.089]:select * from laboratory
+[2022-04-30 20:25:03.306]:show tables;
+[2022-04-30 20:25:03.307]:com.mysql.jdbc.JDBC42PreparedStatement@52af6fea: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:25:03.45]:insert into laboratory (id,name) values ('2','信息对抗研究所')
+[2022-04-30 20:25:04.473]:com.mysql.jdbc.JDBC42PreparedStatement@53a1a0ea: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:25:04.473]:select * from laboratory
+[2022-04-30 20:25:41.6]:com.mysql.jdbc.JDBC42PreparedStatement@6199a913: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:25:41.6]:select * from laboratory where id='2'
+[2022-04-30 20:25:41.615]:com.mysql.jdbc.JDBC42PreparedStatement@49fca4c4: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:25:41.615]:select * from laboratory
+[2022-04-30 20:25:53.169]:com.mysql.jdbc.JDBC42PreparedStatement@617cf98: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:25:53.169]:select * from laboratory
+[2022-04-30 20:26:30.544]:com.mysql.jdbc.JDBC42PreparedStatement@1cfe497: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:26:30.545]:select * from course
+[2022-04-30 20:26:31.773]:com.mysql.jdbc.JDBC42PreparedStatement@3151f68c: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:26:31.773]:select * from laboratory
+[2022-04-30 20:26:32.4]:com.mysql.jdbc.JDBC42PreparedStatement@5627fdd9: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:26:32.4]:select * from student
+[2022-04-30 20:28:35.215]:show tables;
+[2022-04-30 20:28:35.215]:com.mysql.jdbc.JDBC42PreparedStatement@69e92e46: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 20:28:35.216]:com.mysql.jdbc.JDBC42PreparedStatement@7e5b811b: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 20:28:35.216]:com.mysql.jdbc.JDBC42PreparedStatement@4000fdca: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:28:35.217]:com.mysql.jdbc.JDBC42PreparedStatement@5dd78caa: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 20:28:35.217]:com.mysql.jdbc.JDBC42PreparedStatement@7d6c1248: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 20:28:35.218]:com.mysql.jdbc.JDBC42PreparedStatement@5f9d07a7: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 20:28:35.218]:com.mysql.jdbc.JDBC42PreparedStatement@18b44f33: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:28:35.218]:com.mysql.jdbc.JDBC42PreparedStatement@79673253: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:28:35.219]:com.mysql.jdbc.JDBC42PreparedStatement@64048165: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 20:28:35.219]:com.mysql.jdbc.JDBC42PreparedStatement@5313127d: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:28:35.22]:com.mysql.jdbc.JDBC42PreparedStatement@69e412fb: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:28:35.22]:com.mysql.jdbc.JDBC42PreparedStatement@29d1503e: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 20:28:35.22]:com.mysql.jdbc.JDBC42PreparedStatement@699ef3c8: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 20:28:35.22]:com.mysql.jdbc.JDBC42PreparedStatement@2255847c: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:28:35.227]:com.mysql.jdbc.JDBC42PreparedStatement@531b7efc: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:28:35.227]:select * from faculty
+[2022-04-30 20:28:37.664]:com.mysql.jdbc.JDBC42PreparedStatement@1ac7dd11: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:28:37.664]:select * from faculty
+[2022-04-30 20:28:39.351]:com.mysql.jdbc.JDBC42PreparedStatement@6f5b0469: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:28:39.351]:select * from laboratory
+[2022-04-30 20:28:39.908]:com.mysql.jdbc.JDBC42PreparedStatement@5a963f5a: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:28:39.908]:select * from faculty
+[2022-04-30 20:28:59.912]:show tables;
+[2022-04-30 20:28:59.912]:com.mysql.jdbc.JDBC42PreparedStatement@481cd4e4: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:28:59.991]:insert into faculty (id,name,funding) values ('2','文学院','999')
+[2022-04-30 20:29:00.886]:com.mysql.jdbc.JDBC42PreparedStatement@1d23d164: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:29:00.886]:select * from faculty
+[2022-04-30 20:29:07.567]:show tables;
+[2022-04-30 20:29:07.568]:com.mysql.jdbc.JDBC42PreparedStatement@13ba448c: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:29:08.638]:com.mysql.jdbc.JDBC42PreparedStatement@5cc1c524: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:29:08.639]:select * from faculty
+[2022-04-30 20:30:53.692]:show tables;
+[2022-04-30 20:30:53.693]:com.mysql.jdbc.JDBC42PreparedStatement@1288b6db: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 20:30:53.693]:com.mysql.jdbc.JDBC42PreparedStatement@5c64cd28: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 20:30:53.694]:com.mysql.jdbc.JDBC42PreparedStatement@ededb65: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:30:53.694]:com.mysql.jdbc.JDBC42PreparedStatement@17b289de: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 20:30:53.695]:com.mysql.jdbc.JDBC42PreparedStatement@405bcb9d: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 20:30:53.695]:com.mysql.jdbc.JDBC42PreparedStatement@3aac4333: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 20:30:53.695]:com.mysql.jdbc.JDBC42PreparedStatement@42d1a2f0: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:30:53.696]:com.mysql.jdbc.JDBC42PreparedStatement@412e3f0d: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:30:53.696]:com.mysql.jdbc.JDBC42PreparedStatement@5fb70396: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 20:30:53.697]:com.mysql.jdbc.JDBC42PreparedStatement@7da6688: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:30:53.697]:com.mysql.jdbc.JDBC42PreparedStatement@485392a1: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:30:53.698]:com.mysql.jdbc.JDBC42PreparedStatement@78350af1: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 20:30:53.698]:com.mysql.jdbc.JDBC42PreparedStatement@1f791dd2: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 20:30:53.698]:com.mysql.jdbc.JDBC42PreparedStatement@4bc3c693: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:30:53.704]:com.mysql.jdbc.JDBC42PreparedStatement@75e60b5d: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:30:53.704]:select * from faculty
+[2022-04-30 20:31:29.058]:show tables;
+[2022-04-30 20:31:29.059]:com.mysql.jdbc.JDBC42PreparedStatement@56826e9c: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 20:31:29.06]:com.mysql.jdbc.JDBC42PreparedStatement@587a6654: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 20:31:29.06]:com.mysql.jdbc.JDBC42PreparedStatement@4acf4b5d: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:31:29.061]:com.mysql.jdbc.JDBC42PreparedStatement@64da1d14: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 20:31:29.061]:com.mysql.jdbc.JDBC42PreparedStatement@21e9699d: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 20:31:29.062]:com.mysql.jdbc.JDBC42PreparedStatement@2a2af332: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 20:31:29.062]:com.mysql.jdbc.JDBC42PreparedStatement@1a0fc089: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:31:29.062]:com.mysql.jdbc.JDBC42PreparedStatement@2e895c61: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:31:29.063]:com.mysql.jdbc.JDBC42PreparedStatement@44c67dac: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 20:31:29.063]:com.mysql.jdbc.JDBC42PreparedStatement@3908b565: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:31:29.063]:com.mysql.jdbc.JDBC42PreparedStatement@5de72145: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:31:29.064]:com.mysql.jdbc.JDBC42PreparedStatement@39e914cc: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 20:31:29.064]:com.mysql.jdbc.JDBC42PreparedStatement@4e352540: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 20:31:29.064]:com.mysql.jdbc.JDBC42PreparedStatement@326a027e: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:31:29.069]:com.mysql.jdbc.JDBC42PreparedStatement@3f2f0fe8: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:31:29.069]:select * from faculty
+[2022-04-30 20:31:30.773]:com.mysql.jdbc.JDBC42PreparedStatement@16d52310: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:31:30.851]:select * from project
+[2022-04-30 20:31:36.31]:show tables;
+[2022-04-30 20:31:36.31]:com.mysql.jdbc.JDBC42PreparedStatement@36632b15:  select column_name from information_schema.key_column_usage where table_schema='education' and constraint_name='primary' and table_name='project'
+[2022-04-30 20:31:38.064]:com.mysql.jdbc.JDBC42PreparedStatement@44c44914: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:31:38.064]:select * from project
+[2022-04-30 20:31:47.011]:show tables;
+[2022-04-30 20:31:47.011]:com.mysql.jdbc.JDBC42PreparedStatement@169afd9d:  select column_name from information_schema.key_column_usage where table_schema='education' and constraint_name='primary' and table_name='project'
+[2022-04-30 20:31:47.056]:delete from project where id='2'
+[2022-04-30 20:31:48.108]:com.mysql.jdbc.JDBC42PreparedStatement@6255ce2c: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:31:48.109]:select * from project
+[2022-04-30 20:31:53.109]:show tables;
+[2022-04-30 20:31:53.11]:com.mysql.jdbc.JDBC42PreparedStatement@27ddd11b:  select column_name from information_schema.key_column_usage where table_schema='education' and constraint_name='primary' and table_name='project'
+[2022-04-30 20:31:54.374]:com.mysql.jdbc.JDBC42PreparedStatement@335ce2c8: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:31:54.374]:select * from project
+[2022-04-30 20:31:57.495]:com.mysql.jdbc.JDBC42PreparedStatement@725293f1: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:31:57.496]:select * from teacher
+[2022-04-30 20:32:00.744]:com.mysql.jdbc.JDBC42PreparedStatement@42940013: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:32:00.744]:select * from project
+[2022-04-30 20:32:07.468]:com.mysql.jdbc.JDBC42PreparedStatement@7fbc72d4: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:32:07.468]:select * from teacher
+[2022-04-30 20:32:09.198]:com.mysql.jdbc.JDBC42PreparedStatement@54ea8c13: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:32:09.198]:select * from project
+[2022-04-30 20:32:40.647]:show tables;
+[2022-04-30 20:32:40.648]:com.mysql.jdbc.JDBC42PreparedStatement@7a82fe4c: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:32:40.783]:insert into project (id,name) values ('2','数据库实验')
+[2022-04-30 20:32:41.989]:com.mysql.jdbc.JDBC42PreparedStatement@366df2df: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:32:41.99]:select * from project
+[2022-04-30 20:32:51.924]:show tables;
+[2022-04-30 20:32:51.925]:com.mysql.jdbc.JDBC42PreparedStatement@4fe37049: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:32:52.069]:insert into project (id,name) values ('3','舆情分析')
+[2022-04-30 20:32:53.022]:com.mysql.jdbc.JDBC42PreparedStatement@22be6c1d: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:32:53.023]:select * from project
+[2022-04-30 20:32:56.109]:com.mysql.jdbc.JDBC42PreparedStatement@456e064e: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:32:56.11]:select * from project where id='1'
+[2022-04-30 20:32:56.117]:com.mysql.jdbc.JDBC42PreparedStatement@765dab48: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:32:56.117]:select * from project
+[2022-04-30 20:32:58.205]:com.mysql.jdbc.JDBC42PreparedStatement@5bb448a0: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:32:58.205]:select * from project where id='2'
+[2022-04-30 20:32:58.212]:com.mysql.jdbc.JDBC42PreparedStatement@3a513eb: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:32:58.213]:select * from project
+[2022-04-30 20:33:03.374]:com.mysql.jdbc.JDBC42PreparedStatement@2b16fa42: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:33:03.375]:select * from course
+[2022-04-30 20:33:04.021]:com.mysql.jdbc.JDBC42PreparedStatement@67fafa38: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:33:04.021]:select * from project
+[2022-04-30 20:33:04.533]:com.mysql.jdbc.JDBC42PreparedStatement@177499e7: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:33:04.534]:select * from student
+[2022-04-30 20:33:04.894]:com.mysql.jdbc.JDBC42PreparedStatement@2cf6b9e8: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:33:04.894]:select * from laboratory
+[2022-04-30 20:33:05.214]:com.mysql.jdbc.JDBC42PreparedStatement@182363ea: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:33:05.214]:select * from faculty
+[2022-04-30 20:33:05.885]:com.mysql.jdbc.JDBC42PreparedStatement@228bc15d: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:33:05.885]:select * from teacher
+[2022-04-30 20:34:58.183]:com.mysql.jdbc.JDBC42PreparedStatement@68198ba4: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:34:58.184]:select * from teacher
+[2022-04-30 20:34:58.548]:com.mysql.jdbc.JDBC42PreparedStatement@789aded7: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:34:58.549]:select * from faculty
+[2022-04-30 20:34:59.197]:com.mysql.jdbc.JDBC42PreparedStatement@505cf72b: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:34:59.197]:select * from teacher
+[2022-04-30 20:34:59.958]:com.mysql.jdbc.JDBC42PreparedStatement@6aab1ffb: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 20:34:59.958]:select * from faculty
+[2022-04-30 20:35:00.396]:com.mysql.jdbc.JDBC42PreparedStatement@729f5c74: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 20:35:00.396]:select * from laboratory
+[2022-04-30 20:35:00.876]:com.mysql.jdbc.JDBC42PreparedStatement@526c2767: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 20:35:00.877]:select * from student
+[2022-04-30 20:35:01.701]:com.mysql.jdbc.JDBC42PreparedStatement@7be6b7ee: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 20:35:01.702]:select * from project
+[2022-04-30 20:35:02.131]:com.mysql.jdbc.JDBC42PreparedStatement@5e5d9c50: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 20:35:02.131]:select * from course
+[2022-04-30 20:35:05.581]:com.mysql.jdbc.JDBC42PreparedStatement@1c328870: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 20:35:05.582]:select * from teacher
+[2022-04-30 21:26:40.725]:show tables;
+[2022-04-30 21:26:40.751]:com.mysql.jdbc.JDBC42PreparedStatement@28844c49: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 21:26:40.752]:com.mysql.jdbc.JDBC42PreparedStatement@5fa64406: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 21:26:40.754]:com.mysql.jdbc.JDBC42PreparedStatement@79780aa6: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 21:26:40.761]:com.mysql.jdbc.JDBC42PreparedStatement@23a51915: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 21:26:40.767]:com.mysql.jdbc.JDBC42PreparedStatement@2949ff2c: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 21:26:40.768]:com.mysql.jdbc.JDBC42PreparedStatement@44a20877: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 21:26:40.768]:com.mysql.jdbc.JDBC42PreparedStatement@7d36177f: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 21:26:40.769]:com.mysql.jdbc.JDBC42PreparedStatement@7650d47d: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 21:26:40.77]:com.mysql.jdbc.JDBC42PreparedStatement@1086e504: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 21:26:40.771]:com.mysql.jdbc.JDBC42PreparedStatement@4433a6d3: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 21:26:40.771]:com.mysql.jdbc.JDBC42PreparedStatement@9f3dcc5: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 21:26:40.772]:com.mysql.jdbc.JDBC42PreparedStatement@797002ba: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 21:26:40.772]:com.mysql.jdbc.JDBC42PreparedStatement@5e797655: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 21:26:40.773]:com.mysql.jdbc.JDBC42PreparedStatement@7254677: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:26:40.779]:com.mysql.jdbc.JDBC42PreparedStatement@1ba79158: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 21:26:40.782]:select * from faculty
+[2022-04-30 21:26:48.314]:com.mysql.jdbc.JDBC42PreparedStatement@78f00d50: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:28:11.462]:show tables;
+[2022-04-30 21:28:11.466]:com.mysql.jdbc.JDBC42PreparedStatement@1c6f27f6: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 21:28:11.467]:com.mysql.jdbc.JDBC42PreparedStatement@23a9732f: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 21:28:11.467]:com.mysql.jdbc.JDBC42PreparedStatement@4da79240: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 21:28:11.469]:com.mysql.jdbc.JDBC42PreparedStatement@3540eb6a: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 21:28:11.472]:com.mysql.jdbc.JDBC42PreparedStatement@50752aa3: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 21:28:11.472]:com.mysql.jdbc.JDBC42PreparedStatement@38ad1b89: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 21:28:11.473]:com.mysql.jdbc.JDBC42PreparedStatement@49e9ab4e: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 21:28:11.473]:com.mysql.jdbc.JDBC42PreparedStatement@7bc012a2: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 21:28:11.473]:com.mysql.jdbc.JDBC42PreparedStatement@2191f4b: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 21:28:11.474]:com.mysql.jdbc.JDBC42PreparedStatement@52b83dd2: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 21:28:11.474]:com.mysql.jdbc.JDBC42PreparedStatement@568f4f10: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 21:28:11.474]:com.mysql.jdbc.JDBC42PreparedStatement@2d211261: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 21:28:11.475]:com.mysql.jdbc.JDBC42PreparedStatement@6708a3c9: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 21:28:11.475]:com.mysql.jdbc.JDBC42PreparedStatement@744d5457: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:28:11.48]:com.mysql.jdbc.JDBC42PreparedStatement@693b12ce: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 21:28:11.482]:select * from faculty
+[2022-04-30 21:28:15.001]:com.mysql.jdbc.JDBC42PreparedStatement@7bda410e: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:28:15.001]:select teacher.id,teacher.name,teacher.age,salary,direction.name,project.name,laboratory.name,faculty.name  from teacher,direction,project,laboratory,faculty where teacher.dno=direction.id and teacher.pno=project.id and teacher.lno=laboratory.id and teacher.fno=faculty.id and undefined=undefined and 
+[2022-04-30 21:32:15.371]:show tables;
+[2022-04-30 21:32:15.372]:com.mysql.jdbc.JDBC42PreparedStatement@60268e07: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 21:32:15.372]:com.mysql.jdbc.JDBC42PreparedStatement@6ee16c73: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 21:32:15.373]:com.mysql.jdbc.JDBC42PreparedStatement@6adee577: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 21:32:15.373]:com.mysql.jdbc.JDBC42PreparedStatement@2fdc6648: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 21:32:15.374]:com.mysql.jdbc.JDBC42PreparedStatement@7b5e8302: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 21:32:15.374]:com.mysql.jdbc.JDBC42PreparedStatement@1eb9eaee: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 21:32:15.374]:com.mysql.jdbc.JDBC42PreparedStatement@3d15113: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 21:32:15.375]:com.mysql.jdbc.JDBC42PreparedStatement@4ff39907: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 21:32:15.375]:com.mysql.jdbc.JDBC42PreparedStatement@40ba5568: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 21:32:15.376]:com.mysql.jdbc.JDBC42PreparedStatement@1105390b: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 21:32:15.376]:com.mysql.jdbc.JDBC42PreparedStatement@18d5bbf1: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 21:32:15.376]:com.mysql.jdbc.JDBC42PreparedStatement@4bbd224d: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 21:32:15.377]:com.mysql.jdbc.JDBC42PreparedStatement@59be2f47: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 21:32:15.377]:com.mysql.jdbc.JDBC42PreparedStatement@61cb881a: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:32:15.382]:com.mysql.jdbc.JDBC42PreparedStatement@7e5736d7: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 21:32:15.382]:select * from faculty
+[2022-04-30 21:32:17.0]:com.mysql.jdbc.JDBC42PreparedStatement@790122cb: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:32:17.0]:select teacher.id,teacher.name,teacher.age,salary,direction.name,project.name,laboratory.name,faculty.name  from teacher,direction,project,laboratory,faculty where teacher.dno=direction.id and teacher.pno=project.id and teacher.lno=laboratory.id and teacher.fno=faculty.id
+[2022-04-30 21:34:41.486]:show tables;
+[2022-04-30 21:34:41.488]:com.mysql.jdbc.JDBC42PreparedStatement@20edc609: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 21:34:41.489]:com.mysql.jdbc.JDBC42PreparedStatement@2e2a3c64: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 21:34:41.489]:com.mysql.jdbc.JDBC42PreparedStatement@2a15ad79: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 21:34:41.49]:com.mysql.jdbc.JDBC42PreparedStatement@6f17365f: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 21:34:41.491]:com.mysql.jdbc.JDBC42PreparedStatement@2184783a: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 21:34:41.492]:com.mysql.jdbc.JDBC42PreparedStatement@5eb2b972: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 21:34:41.493]:com.mysql.jdbc.JDBC42PreparedStatement@59cba9b8: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 21:34:41.493]:com.mysql.jdbc.JDBC42PreparedStatement@f38c910: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 21:34:41.494]:com.mysql.jdbc.JDBC42PreparedStatement@dff2565: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 21:34:41.495]:com.mysql.jdbc.JDBC42PreparedStatement@464d6481: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 21:34:41.495]:com.mysql.jdbc.JDBC42PreparedStatement@42cf8399: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 21:34:41.495]:com.mysql.jdbc.JDBC42PreparedStatement@b76b299: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 21:34:41.496]:com.mysql.jdbc.JDBC42PreparedStatement@7fd67a9f: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 21:34:41.496]:com.mysql.jdbc.JDBC42PreparedStatement@52926088: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:34:41.507]:com.mysql.jdbc.JDBC42PreparedStatement@7f73728e: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 21:34:41.507]:select * from faculty
+[2022-04-30 21:34:44.161]:com.mysql.jdbc.JDBC42PreparedStatement@622e71af: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:34:44.161]:select * from teacher where teacher.dno=direction.id and teacher.pno=project.id and teacher.lno=laboratory.id and teacher.fno=faculty.id
+[2022-04-30 21:36:16.89]:show tables;
+[2022-04-30 21:36:16.89]:com.mysql.jdbc.JDBC42PreparedStatement@68d61adf: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 21:36:16.891]:com.mysql.jdbc.JDBC42PreparedStatement@2dd499a1: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 21:36:16.892]:com.mysql.jdbc.JDBC42PreparedStatement@3ce636bd: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 21:36:16.893]:com.mysql.jdbc.JDBC42PreparedStatement@1cb317f8: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 21:36:16.893]:com.mysql.jdbc.JDBC42PreparedStatement@446be653: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 21:36:16.894]:com.mysql.jdbc.JDBC42PreparedStatement@4dfb66ee: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 21:36:16.894]:com.mysql.jdbc.JDBC42PreparedStatement@4025f232: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 21:36:16.895]:com.mysql.jdbc.JDBC42PreparedStatement@442d2119: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 21:36:16.895]:com.mysql.jdbc.JDBC42PreparedStatement@5f6f0eb1: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 21:36:16.896]:com.mysql.jdbc.JDBC42PreparedStatement@49b5dfa4: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 21:36:16.896]:com.mysql.jdbc.JDBC42PreparedStatement@266e00c2: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 21:36:16.897]:com.mysql.jdbc.JDBC42PreparedStatement@b66c8ff: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 21:36:16.897]:com.mysql.jdbc.JDBC42PreparedStatement@2c5b55a4: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 21:36:16.898]:com.mysql.jdbc.JDBC42PreparedStatement@4bf4e774: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:36:16.906]:com.mysql.jdbc.JDBC42PreparedStatement@788b2bd3: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 21:36:16.907]:select * from faculty
+[2022-04-30 21:36:19.217]:com.mysql.jdbc.JDBC42PreparedStatement@76794268: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:36:19.217]:select teacher.id,teacher.name,teacher.age,salary,direction.name,project.name,laboratory.name,faculty.name  from teacher,direction,project,laboratory,faculty where teacher.dno=direction.id and teacher.pno=project.id and teacher.lno=laboratory.id and teacher.fno=faculty.id
+[2022-04-30 21:36:36.543]:com.mysql.jdbc.JDBC42PreparedStatement@74af5da7: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:36:36.543]:select * from teacher where id='1'
+[2022-04-30 21:38:01.424]:show tables;
+[2022-04-30 21:38:01.425]:com.mysql.jdbc.JDBC42PreparedStatement@758b19fe: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 21:38:01.425]:com.mysql.jdbc.JDBC42PreparedStatement@3089892b: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 21:38:01.426]:com.mysql.jdbc.JDBC42PreparedStatement@548a7ab6: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 21:38:01.426]:com.mysql.jdbc.JDBC42PreparedStatement@173df34: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 21:38:01.427]:com.mysql.jdbc.JDBC42PreparedStatement@2c9a720d: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 21:38:01.427]:com.mysql.jdbc.JDBC42PreparedStatement@50a67664: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 21:38:01.428]:com.mysql.jdbc.JDBC42PreparedStatement@57fee90c: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 21:38:01.428]:com.mysql.jdbc.JDBC42PreparedStatement@48eb16b8: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 21:38:01.429]:com.mysql.jdbc.JDBC42PreparedStatement@379e1fb2: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 21:38:01.429]:com.mysql.jdbc.JDBC42PreparedStatement@54e84a73: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 21:38:01.429]:com.mysql.jdbc.JDBC42PreparedStatement@74fe6f6b: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 21:38:01.43]:com.mysql.jdbc.JDBC42PreparedStatement@6430e99a: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 21:38:01.43]:com.mysql.jdbc.JDBC42PreparedStatement@23141921: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 21:38:01.431]:com.mysql.jdbc.JDBC42PreparedStatement@353964e2: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:38:01.438]:com.mysql.jdbc.JDBC42PreparedStatement@20d684ae: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 21:38:01.439]:select * from faculty
+[2022-04-30 21:38:03.343]:com.mysql.jdbc.JDBC42PreparedStatement@727340a3: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:38:03.343]:select teacher.id,teacher.name,teacher.age,salary,direction.name,project.name,laboratory.name,faculty.name  from teacher,direction,project,laboratory,faculty where teacher.dno=direction.id and teacher.pno=project.id and teacher.lno=laboratory.id and teacher.fno=faculty.id
+[2022-04-30 21:38:11.64]:com.mysql.jdbc.JDBC42PreparedStatement@63235777: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:38:11.64]:select teacher.id,teacher.name,teacher.age,salary,direction.name,project.name,laboratory.name,faculty.name  from teacher,direction,project,laboratory,faculty where teacher.dno=direction.id and teacher.pno=project.id and teacher.lno=laboratory.id and teacher.fno=faculty.id and id='1'
+[2022-04-30 21:40:43.877]:show tables;
+[2022-04-30 21:40:43.878]:com.mysql.jdbc.JDBC42PreparedStatement@52a36764: select column_name from information_schema.columns where table_schema='education' and table_name='c1stulist'
+[2022-04-30 21:40:43.879]:com.mysql.jdbc.JDBC42PreparedStatement@1eedfd2d: select column_name from information_schema.columns where table_schema='education' and table_name='classroom'
+[2022-04-30 21:40:43.88]:com.mysql.jdbc.JDBC42PreparedStatement@5f3a5858: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 21:40:43.881]:com.mysql.jdbc.JDBC42PreparedStatement@4c468e15: select column_name from information_schema.columns where table_schema='education' and table_name='csstulist'
+[2022-04-30 21:40:43.882]:com.mysql.jdbc.JDBC42PreparedStatement@51748be: select column_name from information_schema.columns where table_schema='education' and table_name='cstealist'
+[2022-04-30 21:40:43.883]:com.mysql.jdbc.JDBC42PreparedStatement@74e2d9a4: select column_name from information_schema.columns where table_schema='education' and table_name='direction'
+[2022-04-30 21:40:43.883]:com.mysql.jdbc.JDBC42PreparedStatement@7917a7f8: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 21:40:43.884]:com.mysql.jdbc.JDBC42PreparedStatement@1d9a8e9: select column_name from information_schema.columns where table_schema='education' and table_name='laboratory'
+[2022-04-30 21:40:43.884]:com.mysql.jdbc.JDBC42PreparedStatement@3e3442d4: select column_name from information_schema.columns where table_schema='education' and table_name='networksecuritylaboratory'
+[2022-04-30 21:40:43.885]:com.mysql.jdbc.JDBC42PreparedStatement@5cf9834f: select column_name from information_schema.columns where table_schema='education' and table_name='project'
+[2022-04-30 21:40:43.885]:com.mysql.jdbc.JDBC42PreparedStatement@1895c74f: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 21:40:43.886]:com.mysql.jdbc.JDBC42PreparedStatement@54c7ba54: select column_name from information_schema.columns where table_schema='education' and table_name='study_relation'
+[2022-04-30 21:40:43.886]:com.mysql.jdbc.JDBC42PreparedStatement@48f960fa: select column_name from information_schema.columns where table_schema='education' and table_name='teach_relation'
+[2022-04-30 21:40:43.887]:com.mysql.jdbc.JDBC42PreparedStatement@588a6151: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:40:43.896]:com.mysql.jdbc.JDBC42PreparedStatement@512483fd: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 21:40:43.896]:select * from faculty
+[2022-04-30 21:40:45.775]:com.mysql.jdbc.JDBC42PreparedStatement@3a75918c: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:40:45.776]:select teacher.id,teacher.name,teacher.age,salary,direction.name,project.name,laboratory.name,faculty.name  from teacher,direction,project,laboratory,faculty where teacher.dno=direction.id and teacher.pno=project.id and teacher.lno=laboratory.id and teacher.fno=faculty.id
+[2022-04-30 21:40:49.663]:com.mysql.jdbc.JDBC42PreparedStatement@1685a007: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:40:49.663]:select teacher.id,teacher.name,teacher.age,salary,direction.name,project.name,laboratory.name,faculty.name  from teacher,direction,project,laboratory,faculty where teacher.dno=direction.id and teacher.pno=project.id and teacher.lno=laboratory.id and teacher.fno=faculty.id and teacher.id='1'
+[2022-04-30 21:40:57.944]:com.mysql.jdbc.JDBC42PreparedStatement@2566ab6f: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:40:57.944]:select teacher.id,teacher.name,teacher.age,salary,direction.name,project.name,laboratory.name,faculty.name  from teacher,direction,project,laboratory,faculty where teacher.dno=direction.id and teacher.pno=project.id and teacher.lno=laboratory.id and teacher.fno=faculty.id and teacher.id='1' and teacher.name='Jason'
+[2022-04-30 21:42:10.905]:com.mysql.jdbc.JDBC42PreparedStatement@c54e8ed: select column_name from information_schema.columns where table_schema='education' and table_name='student'
+[2022-04-30 21:42:10.905]:select * from student
+[2022-04-30 21:42:16.239]:com.mysql.jdbc.JDBC42PreparedStatement@73f949bb: select column_name from information_schema.columns where table_schema='education' and table_name='course'
+[2022-04-30 21:42:16.243]:select * from course
+[2022-04-30 21:42:20.135]:com.mysql.jdbc.JDBC42PreparedStatement@cc904b7: select column_name from information_schema.columns where table_schema='education' and table_name='faculty'
+[2022-04-30 21:42:20.135]:select * from faculty
+[2022-04-30 21:42:22.333]:com.mysql.jdbc.JDBC42PreparedStatement@76f682c: select column_name from information_schema.columns where table_schema='education' and table_name='teacher'
+[2022-04-30 21:42:22.334]:select teacher.id,teacher.name,teacher.age,salary,direction.name,project.name,laboratory.name,faculty.name  from teacher,direction,project,laboratory,faculty where teacher.dno=direction.id and teacher.pno=project.id and teacher.lno=laboratory.id and teacher.fno=faculty.id

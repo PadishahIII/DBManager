@@ -301,11 +301,38 @@ public class DBResponse extends HttpServlet {
         return dataList;
     }
 
+    /**
+     * 处理单表查询和多表查询
+     * @param tblname 表名，若为多表则用逗号隔开
+     * @param whereClause where条件  包含自然连接条件
+     * @return
+     * @throws SQLException
+     */
     public List<String> queryTableData(String tblname, String whereClause) throws SQLException {
         List<String> dataList = new ArrayList<>();
-        int colnum = getColumnNames(tblname).size();
+        int colnum;
+        String projection = "*";//投影的列名
+        if (!tblname.contains(",")) {
+            colnum = getColumnNames(tblname).size();
+        } else {//多表查询
+            String real_tblname = tblname.split(",")[0];
+            colnum = getColumnNames(real_tblname).size();
+            switch (real_tblname) {
+                case "teacher":
+                    projection = "teacher.id,teacher.name,teacher.age,salary,direction.name,project.name,laboratory.name,faculty.name ";
+                    break;
+                default:
+                    break;
+            }
+        }
 
-        String sql = "select * from " + tblname + " where " + whereClause;
+        /**
+         *  select teacher.id,teacher.name,teacher.age,salary,direction.name,project.name,laboratory.name,faculty.name 
+         *          from teacher,direction,project,laboratory,faculty 
+         *          where teacher.dno=direction.id and teacher.pno=project.id and teacher.lno=laboratory.id and teacher.fno=faculty.id;
+         */
+        String sql = "select " + projection + " from " + tblname + " where " + whereClause;
+        writeLog(sql);
         java.sql.PreparedStatement pstmt = conn.prepareStatement(sql);
         //pstmt.setString(1, tblname);
         ResultSet sql_res = pstmt.executeQuery(sql);
@@ -321,7 +348,6 @@ public class DBResponse extends HttpServlet {
             dataList.add(line.toString());
             line = new StringBuffer();
         }
-        writeLog(sql);
         return dataList;
     }
 
