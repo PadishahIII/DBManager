@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="css/Wyrd.css" type="text/css" rel="stylesheet">
         <script>
             window.onload=function(){
                 //let username = getCookieValue('username')
@@ -14,8 +15,9 @@
                 //申请表信息
                 getTables()
                 console.log(TableNames)
+                //var t = new TeacherInfoPage()
 
-            generateTable1D(TableNames.length,TableNames,0)
+            //generateTable1D(TableNames.length,TableNames,0)
                 
 
                 console.log("columnInfo:")
@@ -55,30 +57,92 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <title>学生信息管理</title>
         <style type="text/css">
-                .alertceng{
-                    background: #FFFFFF;
-                    padding: 10px;
-                    display: none;
-                }
-                .alertceng span.title{
-                    margin-right: 10px;
-                }
+            #page{
+                width:960px;
+                margin:0 auto;
+            }
+            #top{
+                width: 960px;
+                height: 150px;
+                background-color: aqua;
+            }
+            #main{
+                height: 1000px;
+            }
+            #left,#mid,#right{
+                height: 400px;
+                float:left;
+            }
+            #left{
+                width: 200px;
+                background-color: aquamarine;
+            }
+            #mid{
+                width: 560px;
+                background-color: azure;
+            }
+            #right{
+                width: 200px;
+                background-color: blanchedalmond;
+            }
+            button{
+                color: aliceblue;
+                background-color: darkslateblue;
+                border-radius: 4px;
+                border: wheat;
+                padding: 6px 20px;
+                cursor: pointer;
+                margin-right: 12px;
+                font-family: inherit;
+                outline: auto;
+                user-select: all;
+                width: 200px;
+            }
         </style>
     </head>
-    <body>
-        <div class="controls">
-            <input
-                id="input_search"
-                name="input_search"
-                type="text"
-                class="input-xlarge"
-                placeholder="search"
-            >
-            <label id="searchWarn"></label>
-            <button type="button" class="layui-btn" id="search">公司名/用户/邮箱查询</button>
-            <!--class="layui-btn"-->
-            <!--  -->
-            <button type="button" class="layui-btn" id="searchAll">列出所有</button>
+    <body class="is-frameless mod-windows css-settings-manager plugin-sliding-panes plugin-sliding-panes-stacking lig Top check-color check-bg slrvb-g s-d drwn nord red-velvet bl-xmas hd-img color-scheme-options-autumn-topaz background-settings-workplace-style-none background-settings-workplace-theme-light-none background-settings-workplace-theme-dark-hyacinth-macaw background-image-settings-markdown-page-woof-meow background-image-settings-markdown-page-random background-image-settings-markdown-page-random-blue bt-status-off circular-checkbox fancy-hr list-bracket-left-two light-background-color-files folder-style-change-options-colorful folder-colorful-one blockquote-style-speech-bubble-one export-pdf-style-default naked-embed embed-hd style-options-for-calendar-plugin-style-two style-options-for-admonition-plugin style-options-for-kanban-plugin-static-default style-options-for-kanban-plugin-dynamic-default rainbow-checklist theme-dark">
+        <div id="page">
+            <div id="top">
+                <h1>aaaa</h1>
+                <input
+                    id="input_search"
+                    name="input_search"
+                    type="text"
+                    placeholder="search"
+                >
+                <label id="searchWarn"></label>
+                <button type="button" id="search">公司名/用户/邮箱查询</button>
+                <!--id="layui-btn"-->
+                <!--  -->
+                <button type="button" id="searchAll">列出所有</button>
+            </div>
+            <div id="main" class="markdown-preview-view markdown-rendered node-insert-event allow-fold-headings show-indentation-guide allow-fold-lists show-frontmatter">
+                <div id="left" class="markdown-preview-pusher">
+                    <button onclick="javascript:var t = new TeacherInfoPage()">教师信息</button>
+                    <button>实验室信息</button>
+                    <button>院系信息</button>
+                    <button>学生信息</button>
+                    <button>科研项目</button>
+                    <button>课程信息</button>
+                </div>
+                <div id="mid">
+                    <!--<table>
+                    <tr>
+                        <th>aaa</th>
+                        <th>bbb</th>
+                        <th>ccc</th>
+                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>AAAA</td>
+                            <td>BBBB</td>
+                            <td>CCCC</td>
+                        </tr>
+                    </tbody>
+                </table>
+                --></div>
+                <div id="right"></div>
+            </div>
         </div>
         <script src="js/jquery_1.11.1.min.js"></script>
         <script src="js/jquery.backstretch.min.js"></script>
@@ -91,6 +155,7 @@
         <script src="js/mycrypto.js"></script>
         <script src="js/cookie.js"></script>
         <script src="js/DBQuery.js"></script>
+        <script src="js/DBClass.js"></script>
         <script type="text/javascript">
             generateTable1D(TableNames.length,TableNames,0)
             //table = document.createElement("table")

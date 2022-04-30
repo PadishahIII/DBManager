@@ -210,6 +210,24 @@ public class DBResponse extends HttpServlet {
                 e.printStackTrace();
                 out.println("更新失败，数据格式有误");
             }
+        } else if (op.equals("queryTableData")) {
+            try {
+                String tblname = request.getParameter("tblname");
+                String whereClause = request.getParameter("whereClause");
+                System.out.println("query: " + tblname + " where " + whereClause);
+                JSONObject res = new JSONObject();
+
+                List<String> dataList = queryTableData(tblname, whereClause);
+                res.put("num", dataList.size());
+                Integer index = 0;
+                for (String i : dataList) {
+                    res.put(index.toString(), i);
+                    index++;
+                }
+                out.println(res.toJSONString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -277,6 +295,31 @@ public class DBResponse extends HttpServlet {
             }
             line.deleteCharAt(line.length() - 1);
             dataList.add(line.toString());
+            line = new StringBuffer();
+        }
+        writeLog(sql);
+        return dataList;
+    }
+
+    public List<String> queryTableData(String tblname, String whereClause) throws SQLException {
+        List<String> dataList = new ArrayList<>();
+        int colnum = getColumnNames(tblname).size();
+
+        String sql = "select * from " + tblname + " where " + whereClause;
+        java.sql.PreparedStatement pstmt = conn.prepareStatement(sql);
+        //pstmt.setString(1, tblname);
+        ResultSet sql_res = pstmt.executeQuery(sql);
+
+        StringBuffer line = new StringBuffer();
+        while (sql_res.next()) {
+            for (int j = 1; j <= colnum; j++) {
+                String coldata = sql_res.getString(j);
+                line.append(coldata);
+                line.append(";");
+            }
+            line.deleteCharAt(line.length() - 1);
+            dataList.add(line.toString());
+            line = new StringBuffer();
         }
         writeLog(sql);
         return dataList;

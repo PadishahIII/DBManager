@@ -66,6 +66,10 @@
   	<servlet-name>DBResponse</servlet-name>
   	<url-pattern>/update</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DBResponse</servlet-name>
+  	<url-pattern>/queryTableData</url-pattern>
+  </servlet-mapping>
   
 
 </web-app>

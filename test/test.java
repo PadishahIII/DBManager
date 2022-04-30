@@ -133,6 +133,12 @@ public class test {
         for (String i : dList) {
             System.out.println(i);
         }
+        //query with whereClause
+        System.out.println("query with whereClause");
+        List<String> dList_1 = dbResponse.queryTableData("teacher", "id=1");
+        for (String i : dList_1) {
+            System.out.println(i);
+        }
 
         //insert
         //Map<String, String> data_map = new HashMap<>();

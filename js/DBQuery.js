@@ -1,3 +1,219 @@
+var TableData = new Map()// tblname => data_array
+var QueryResult = new Map()//同TableData
+var TableThreads = {
+    "teacher": ['ID', '姓名', '年龄', '工资', '研究方向', '科研项目', '实验室', '所在院系']
+}
+class TeacherInfoPage {
+    static TblName = 'teacher';
+    tblname;
+    InfoTable = null;
+    InsertDiv;
+    QueryDiv;
+    QueryTable;
+    DeleteDiv;
+    constructor() {
+
+    }
+    constructor(tblname) {
+        this.tblname = tblname;
+        TeacherInfoPage.clean();
+        TeacherInfoPage.DisplayData();
+        this.buildInsertDiv();
+        this.buildQueryDiv();
+        this.buildDeleteDiv();
+    }
+    static clean() {
+        var mid = document.getElementById('mid');
+        var nodeCount = 0;
+        var children = mid.childNodes;
+        for (var i in children) {
+            if (children[i].nodeType == 1)
+                nodeCount++;
+        }
+        while (nodeCount > 0) {
+            children = mid.childNodes;
+            for (var i in children) {
+                if (children[i].nodeType == 1) {
+                    children[i].remove();
+                    nodeCount--;
+                }
+            }
+        }
+    }
+    static DisplayData() {
+        getTableData(TeacherInfoPage.TblName);
+        var tabledata = TableData.get(TeacherInfoPage.TblName);
+        if (tabledata == null || tabledata.length == 0) return;
+        var append = true;
+        if (this.InfoTable != null) {
+            this.InfoTable.remove();
+            append = false;
+        }
+        this.InfoTable = generateTable2D(tabledata.length, tabledata[0].length, tabledata, TeacherInfoPage.TblName);
+        this.InfoTable.id = "InfoTable";
+        if (append)
+            document.getElementById('mid').appendChild(this.InfoTable);
+        else {
+            var insertdiv = document.getElementById('InsertDiv');
+            document.getElementById('mid').insertBefore(this.InfoTable, insertdiv);//TODO:不能直接用InsertDiv
+        }
+
+    }
+    static DisplayQueryResult() {
+        getTableData(TeacherInfoPage.TblName);
+        if (this.QueryTable != null) {
+            this.QueryTable.remove();
+        }
+        var tabledata = QueryResult.get(TeacherInfoPage.TblName);
+        if (tabledata == null || tabledata.length == 0) return;
+        this.QueryTable = generateTable2D(tabledata.length, tabledata[0].length, tabledata, TeacherInfoPage.TblName);
+        document.getElementById('mid').appendChild(this.QueryTable);
+    }
+    buildInsertDiv() {
+        var div = document.createElement('div');
+        div.id = "InsertDiv";
+        document.getElementById('mid').appendChild(div);
+        this.InsertDiv = div;
+        var label = document.createElement('label');
+        label.innerHTML = "插入数据:";
+        div.appendChild(label);
+
+        var tabledata = TableThreads[this.tblname];
+        for (var i in tabledata) {
+            var input = document.createElement('input');
+            input.type = "text";
+            input.placeholder = tabledata[i];
+            div.appendChild(input);
+        }
+        var button = document.createElement('button');
+        button.onclick = function () {
+            var data_map = new Map();
+            var colnames = ColumnInfo.get(TeacherInfoPage.TblName);
+
+            var children = div.children;
+            var index = 0;
+            for (var i in children) {
+                if (children[i].localName == 'input') {
+                    var value = children[i].value;
+                    if (value == '') {
+                        alert(children[i].placeholder + "字段不能为空");
+                        return;
+                    }
+                    data_map.set(colnames[index++], value);
+                }//if
+            }//for
+            insertIntoTable(TeacherInfoPage.TblName, data_map);
+            TeacherInfoPage.DisplayData();
+        }//function
+        button.width = "30px";
+        button.innerHTML = "提交";
+
+        div.appendChild(button);
+    }
+    buildQueryDiv() {
+        var div = document.createElement('div');
+        this.QueryDiv = div;
+        div.id = "QueryDiv";
+        var label = document.createElement('label');
+        label.innerHTML = "查询:";
+        div.appendChild(label);
+
+        var tabledata = TableThreads[this.tblname];
+        for (var i in tabledata) {
+            var input = document.createElement('input');
+            input.type = "text";
+            input.placeholder = tabledata[i];
+            div.appendChild(input);
+        }
+        var button = document.createElement('button');
+        button.onclick = function () {
+            var whereClause = new String();
+            var colnames = ColumnInfo.get(TeacherInfoPage.TblName);
+            var children = div.children;
+            var index = 0;
+            for (var i in children) {
+                if (children[i].localName == 'input') {
+                    var value = children[i].value;
+                    if (value != '') {
+                        //加到whereClause中
+                        whereClause += (colnames[index] + '=\'' + value + '\' and ');
+                    }
+                    index++;
+                }//if
+            }//for
+            whereClause = whereClause.substring(0, whereClause.length - 5);
+            //alert(whereClause);
+            queryTableData(TeacherInfoPage.TblName, whereClause);
+            TeacherInfoPage.DisplayQueryResult();
+        }//function
+        button.width = "30px";
+        button.innerHTML = "提交";
+
+        div.appendChild(button);
+        document.getElementById('mid').appendChild(div);
+    }
+    buildDeleteDiv() {
+        var div = document.createElement('div');
+        this.DeleteDiv = div;
+        div.id = "DeleteDiv";
+        var label = document.createElement('label');
+        label.innerHTML = "移除:";
+        div.appendChild(label);
+
+        var input = document.createElement('input');
+        input.type = "text";
+        input.placeholder = "ID";
+        div.appendChild(input);
+
+        var button = document.createElement('button');
+        button.onclick = function () {
+            var whereClause = new String();
+            var colnames = ColumnInfo.get(TeacherInfoPage.TblName);
+
+            var data_map = new Map();
+
+            var children = div.children;
+            var index = 0;
+            for (var i in children) {
+                if (children[i].localName == 'input') {
+                    var value = children[i].value;
+                    if (value != '') {
+                        data_map.set("id", value);
+                    }
+                    index++;
+                }//if
+            }//for
+            deleteFromTable(TeacherInfoPage.TblName, data_map);
+            TeacherInfoPage.DisplayData();
+        }//function
+        button.width = "30px";
+        button.innerHTML = "提交";
+
+        div.appendChild(button);
+        document.getElementById('mid').appendChild(div);
+    }
+}
+
+//清除元素id下的所有节点
+function clean(id) {
+    var mid = document.getElementById(id);
+    var nodeCount = 0;
+    var children = mid.childNodes;
+    for (var i in children) {
+        if (children[i].nodeType == 1)
+            nodeCount++;
+    }
+    while (nodeCount > 0) {
+        children = mid.childNodes;
+        for (var i in children) {
+            if (children[i].nodeType == 1) {
+                children[i].remove();
+                nodeCount--;
+            }
+        }
+    }
+}
+
 //获取所有表格的名字及字段名
 /**
  * 返回内容：
@@ -51,7 +267,6 @@ function getTables() {
  *  ...
  * }
  */
-var TableData = new Map()// tblname => data_array
 function getTableData(tblname) {
     xmlhttp = new XMLHttpRequest()
     xmlhttp.open("GET", "/DBManager/queryAllData?tblname=" + tblname, false)
@@ -78,7 +293,35 @@ function getTableData(tblname) {
         i++
     }//while i
     TableData.set(tblname, col_datas)
+}
+function queryTableData(tblname, whereClause) {
+    xmlhttp = new XMLHttpRequest()
+    xmlhttp.open("POST", "/DBManager/queryTableData", false)
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    xmlhttp.send("tblname=" + tblname + "&whereClause=" + whereClause)
+    var data = xmlhttp.responseText
 
+    if (data[0] != '{') {
+        alert(data)
+    }
+    var json = JSON.parse(data)
+
+    var num = json['num']
+    var col_datas = new Array()
+    var i = 0
+    while (i < num) {
+        var col_data_str = json[String(i)]
+        var col_data_strs = col_data_str.split(";")
+        var col_data_arr = new Array()
+        for (var j in col_data_strs) {
+            if (col_data_strs[j] != '') {
+                col_data_arr.push(col_data_strs[j])
+            }//if
+        }//for j
+        col_datas.push(col_data_arr)
+        i++
+    }//while i
+    QueryResult.set(tblname, col_datas)
 }
 
 /**
@@ -117,10 +360,6 @@ function insertIntoTable(tblname, data_map) {
  * @param {*} data_map 
  */
 function deleteFromTable(tblname, data_map) {
-    if (data_map.size != ColumnInfo.get(tblname).length) {
-        alert("Error1 at deleteFromTable!")
-        return false
-    }
     var postString = new String()
     for (var i of data_map.keys()) {
         postString += i
@@ -189,19 +428,27 @@ function Map2Obj(map) {
  * @param {*} col 
  * @param {*} data_arr row大小的数组，每个元素为col大小的数组
  */
-function generateTable2D(row, col, data_arr) {
+function generateTable2D(row, col, data_arr, thread) {
     table = document.createElement("table")
     tBody = document.createElement("tBody")
+    if (thread != '') {
+        AddThreadToTable(thread, tBody)
+    }
     for (var i = 0; i < row; i++) {
-        tr = tBody.insertRow(i)
+        //tr = table.insertRow(i)
+        var tr = document.createElement('tr')
         var arr = data_arr[i]
         for (var j = 0; j < col; j++) {
-            td = tr.insertCell(j)
+            //td = tr.insertCell(j)
+            var td = document.createElement('td')
             td.innerHTML = arr[j]
+            tr.appendChild(td)
         }
+        tBody.appendChild(tr)
     }
     table.appendChild(tBody)
     document.body.appendChild(table)
+    return table;
 }
 /**
  * 生成一维纵向或横向表
@@ -209,9 +456,12 @@ function generateTable2D(row, col, data_arr) {
  * @param {*} data_arr 
  * @param {*} type 0 for 纵向  1 for 横向
  */
-function generateTable1D(num, data_arr, type) {
+function generateTable1D(num, data_arr, type, thread) {
     table = document.createElement("table")
     tBody = document.createElement("tBody")
+    if (thread != '') {
+        AddThreadToTable(thread, tBody)
+    }
     if (type == 0) {
         for (var i = 0; i < num; i++) {
             tr = tBody.insertRow(i)
@@ -229,7 +479,19 @@ function generateTable1D(num, data_arr, type) {
     else console.log("Error in generateTable1D")
     table.appendChild(tBody)
     document.body.appendChild(table)
+    return table;
 }
+function AddThreadToTable(tblname, tableobj) {
+    var tharr = TableThreads[tblname]
+    var tr = document.createElement('tr')
+    for (var i in tharr) {
+        var th = document.createElement('th')
+        th.innerHTML = tharr[i]
+        tr.appendChild(th)
+    }
+    tableobj.appendChild(tr)
+}
+//console.log(TableThreads['teacher'])
 //var data_map = new Map()
 //data_map.set("id", 1)
 //data_map.set("name", "aa")
@@ -261,3 +523,26 @@ function generateTable1D(num, data_arr, type) {
  * 获取
  */
 
+class a {
+    n;
+    static s;
+    constructor(nn) {
+        this.n = nn;
+        console.log("a");
+    }
+    func() {
+        console.log("func");
+    }
+}
+class b extends a {
+    constructor(nn) {
+        //super(nn);
+        console.log("b");
+    }
+    func() {
+        console.log("bfunc");
+    }
+}
+var bb = new b("b");
+console.log(bb.n);
+bb.func();
