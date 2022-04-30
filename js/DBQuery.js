@@ -6,7 +6,8 @@ var TableThreads = {
     "course": ['ID', '课程名', '学分', '所在教室'],
     "laboratory": ['ID', '实验室名称'],
     "faculty": ['ID', '院系名称', '资金'],
-    "project": ['ID', '项目名称']
+    "project": ['ID', '项目名称'],
+    "direction": ["ID", "研究方向名称"]
 }
 var TextToColumnName = {
     "研究方向": "direction.name",
@@ -325,9 +326,9 @@ function queryTableData(tblname, whereClause) {
     xmlhttp.send("tblname=" + tblname + "&whereClause=" + whereClause)
     var data = xmlhttp.responseText
 
-    //if (data[0] != '{') {
-    //alert(data)
-    //}
+    if (data[0] != '{') {
+        alert(data)
+    }
     var json = JSON.parse(data)
 
     var num = json['num']
