@@ -29,8 +29,11 @@ class CourseInfoPage extends TeacherInfoPage {
         }
     }
     static DisplayData() {
-        getTableData(CourseInfoPage.TblName);
-        var tabledata = TableData.get(CourseInfoPage.TblName);
+        var tblNameList = ["course", "classroom"];
+        var JoinClause = ["course.cno", "classroom.id"];
+        queryWithNaturalJoin(tblNameList, JoinClause, '');
+
+        var tabledata = QueryResult.get(CourseInfoPage.TblName);
         if (tabledata == null || tabledata.length == 0) return;
         var append = true;
         if (this.InfoTable != null) {
@@ -48,7 +51,6 @@ class CourseInfoPage extends TeacherInfoPage {
 
     }
     static DisplayQueryResult() {
-        getTableData(CourseInfoPage.TblName);
         if (this.QueryTable != null) {
             this.QueryTable.remove();
         }
@@ -122,16 +124,24 @@ class CourseInfoPage extends TeacherInfoPage {
             for (var i in children) {
                 if (children[i].localName == 'input') {
                     var value = children[i].value;
+                    var placeholder = children[i].placeholder;
+                    var columnname
+                    if (TextToColumnName[placeholder] == null)
+                        columnname = CourseInfoPage.TblName + "." + colnames[index];
+                    else
+                        columnname = TextToColumnName[placeholder];
                     if (value != '') {
                         //加到whereClause中
-                        whereClause += (colnames[index] + '=\'' + value + '\' and ');
+                        whereClause += (columnname + '=\'' + value + '\' and ');
                     }
                     index++;
                 }//if
             }//for
             whereClause = whereClause.substring(0, whereClause.length - 5);
             //alert(whereClause);
-            queryTableData(CourseInfoPage.TblName, whereClause);
+            var tblNameList = ["course", "classroom"];
+            var JoinClause = ["course.cno", "classroom.id"];
+            queryWithNaturalJoin(tblNameList, JoinClause, whereClause);
             CourseInfoPage.DisplayQueryResult();
         }//function
         button.width = "30px";

@@ -321,6 +321,11 @@ public class DBResponse extends HttpServlet {
                 case "teacher":
                     projection = "teacher.id,teacher.name,teacher.age,salary,direction.name,project.name,laboratory.name,faculty.name ";
                     break;
+                case "student":
+                    projection = "student.id,student.name,student.sex,student.age,student.grade,faculty.name";
+                    break;
+                case "course":
+                    projection = "course.id,course.name,course.credit,classroom.building";
                 default:
                     break;
             }

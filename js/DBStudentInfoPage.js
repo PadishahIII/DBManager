@@ -29,8 +29,12 @@ class StudentInfoPage extends TeacherInfoPage {
         }
     }
     static DisplayData() {
-        getTableData(StudentInfoPage.TblName);
-        var tabledata = TableData.get(StudentInfoPage.TblName);
+        //getTableData(StudentInfoPage.TblName);
+        var tblNameList = ["student", "faculty"];
+        var JoinClause = ["student.fno", "faculty.id"];
+        queryWithNaturalJoin(tblNameList, JoinClause, '');
+
+        var tabledata = QueryResult.get(StudentInfoPage.TblName);
         if (tabledata == null || tabledata.length == 0) return;
         var append = true;
         if (this.InfoTable != null) {
@@ -48,7 +52,6 @@ class StudentInfoPage extends TeacherInfoPage {
 
     }
     static DisplayQueryResult() {
-        getTableData(StudentInfoPage.TblName);
         if (this.QueryTable != null) {
             this.QueryTable.remove();
         }
@@ -123,15 +126,23 @@ class StudentInfoPage extends TeacherInfoPage {
                 if (children[i].localName == 'input') {
                     var value = children[i].value;
                     if (value != '') {
+                        var placeholder = children[i].placeholder;
+                        var columnname
+                        if (TextToColumnName[placeholder] == null)
+                            columnname = StudentInfoPage.TblName + "." + colnames[index];
+                        else
+                            columnname = TextToColumnName[placeholder];
                         //加到whereClause中
-                        whereClause += (colnames[index] + '=\'' + value + '\' and ');
+                        whereClause += (columnname + '=\'' + value + '\' and ');
                     }
                     index++;
                 }//if
             }//for
             whereClause = whereClause.substring(0, whereClause.length - 5);
             //alert(whereClause);
-            queryTableData(StudentInfoPage.TblName, whereClause);
+            var tblNameList = ["student", "faculty"];
+            var JoinClause = ["student.fno", "faculty.id"];
+            queryWithNaturalJoin(tblNameList, JoinClause, whereClause);
             StudentInfoPage.DisplayQueryResult();
         }//function
         button.width = "30px";

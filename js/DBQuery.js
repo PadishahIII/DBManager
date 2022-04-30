@@ -12,7 +12,8 @@ var TextToColumnName = {
     "研究方向": "direction.name",
     "科研项目": "project.name",
     "实验室": "laboratory.name",
-    "所在院系": "faculty.name"
+    "所在院系": "faculty.name",
+    "所在教室": "classroom.building"
 }
 class TeacherInfoPage {
     static TblName = 'teacher';
